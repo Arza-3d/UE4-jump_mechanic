@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "GameFramework/CharacterMovementComponent.h"
 #include "JumpMechanic.h"
 
 
@@ -19,8 +18,8 @@ UJumpMechanic::UJumpMechanic()
 void UJumpMechanic::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
+	//UKismetSystemLibrary::PrintString(this, "printStringTest", true, true, ,5.0F);
+	
 	
 }
 
