@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://image.ibb.co/nqbdHJ/titlelogo.png" rel="icon">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
+    <title>learning note</title>
+  </head>
+  <body
+    data-repo-r3="https://github.com/Arza-3d/UE4-jump-mechanic"
+    data-headers-r3="> div > h2| > div > h3 "
+  >
+    <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3header.js"></script>
+    <header>
+      <h1>title</h1>
+      <h4>title 4</h4>
+
+      <p>......</p>
+    </header>
+    <main class="aside-nav-target-r3">
+      <div data-title-r3="....">
+        <h2>title h2</h2>
+        <h3>Jump cheatsheet</h3>
+        <section>
+          <p>Below are quick example on setting up character jump:</p>
+          <ul>
+            <li>
+              Make character jump 3 meter:
+              <br><code>CharacterMovement.JumpZVelocity = </code>
+            </li>
+          </ul>
+        </section>
+        <h3>_JumpMechanic</h3>
+        <section>
+          <p><code>_JumpMechanic</code> is <code>BlueprintComponent</code> that will be the <b>parent class</b> of all jump mechanics that will be created in this project.</p>
+          <p>Will have this method:</p>
+          <ul>
+            <li>
+              You can call <code>GetJumpPeak</code> <b>event</b> that will call <code>JumpPeak</code> <b>event dispatcher</b> at the right time. <br>That right time is when the owner <code>Character</code> reach <var>v<sub>z</sub> velocity = 0</var>.<br> Some jump mechanic will need it, some don't, if you wanna activate it must be activated after <code><em>Character</em>.Jump();</code>
+            </li>
+            <li>
+              <code><span style="color:green">float</span> CalculateJumpZVelocity(<span style="color:green">float</span> Height);</code> is function that calculate <code>JumpZVelocity</code> based on the <b>desired max jump height</b>.
+              <br>
+              <details>
+                <summary>the math of the function:</summary>
+                <img src="https://image.ibb.co/fA2Od0/Gravity-Formula-Copy.jpg" alt="Gravity-Formula-UE4">
+              </details>
+              <details>
+                <summary>example:</summary>
+
+                  Make character that jump <b style="color:green">200</b> cm. So the <code>JumpZVelocity</code> is:
+                <code>Character.JumpZVelocity = _JumpMechanic.CalculateJumpZVelocity(<b style="color:green">200</b>);</code>
+              </details>
+              <br>
+            </li>
+            <li>
+              <code>void SetJumpZVelocityAndGravityScale(float JumpHeight, float JumpTime);</code>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+    <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3.min.js"></script>
+  </body>
+</html>
