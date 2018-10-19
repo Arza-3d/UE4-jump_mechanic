@@ -1,0 +1,14 @@
+Binaries/
+.vs/
+Intermediate/
+Saved/
+Content/Collections/
+Content/Developers/
+Content/Geometry/
+Content/Mannequin/
+Content/ThirdPerson/
+Content/ThirdPersonCPP/
+StudyJumpMechanic.opensdf
+StudyJumpMechanic.sdf
+StudyJumpMechanic.sln
+ProjectName.v12.suo
