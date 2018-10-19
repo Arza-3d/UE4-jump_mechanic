@@ -21,7 +21,6 @@ void UJumpMechanic::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	printString("test");
 	
 }
 
