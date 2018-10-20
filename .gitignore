@@ -1,12 +1,16 @@
 #https://github.com/github/gitignore/blob/master/UnrealEngine.gitignore
 
-Binaries/
+Binaries/*
 .vs/
-Intermediate/
-Saved/
+Intermediate/*
+Saved/*
+
 Content/*
 !Content/BlueprintComponents/
 !Content/BlueprintLibrary/
+!Content/Characters/
+
+
 StudyJumpMechanic.opensdf
 StudyJumpMechanic.sdf
 StudyJumpMechanic.sln
