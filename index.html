@@ -20,8 +20,8 @@
       <p>......</p>
     </header>
     <main class="aside-nav-target-r3">
-      <div data-title-r3="....">
-        <h2>title h2</h2>
+      <div data-title-r3="the math">
+        <h2>basic physics of jump</h2>
         <h3>Jump cheatsheet</h3>
         <section>
           <p>Below are quick example on setting up character jump:</p>
@@ -37,6 +37,9 @@
             </li>
           </ul>
         </section>
+      </div>
+      <div data-title-r3="actor component">
+        <h2>parent class</h2>
         <h3>_JumpMechanic</h3>
         <section>
           <p><code>_JumpMechanic</code> is <code>BlueprintComponent</code> that will be the <b>parent class</b> of all jump mechanics that will be created in this project.</p>
@@ -63,6 +66,18 @@
             <li>
               <code>void SetJumpZVelocityAndGravityScale(float JumpHeight, float JumpTime);</code>
             </li>
+          </ul>
+        </section>
+
+        <h2>child class</h2>
+        <h3>JumpThenGlide</h3>
+        <section>
+          <p>Character able to glide in the air after jump. <br>I think Rayman and Spyro used this jump mechanic.</p>
+          <p>This component contains these events:</p>
+          <ul>
+            <li><code>InputActionJumpPressed</code> or <code>InputActionJumpPressed_estimated</code></li>
+            <li><code>InputActionJumpReleased</code></li>
+            <li><code>EventOnLanded</code></li>
           </ul>
         </section>
       </div>

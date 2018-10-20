@@ -9,6 +9,7 @@ Content/*
 !Content/BlueprintComponents/
 !Content/BlueprintLibrary/
 !Content/Characters/
+!Content/Widget/
 
 
 StudyJumpMechanic.opensdf
