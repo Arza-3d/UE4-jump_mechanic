@@ -4,7 +4,7 @@ Binaries/
 .vs/
 Intermediate/
 Saved/
-Content/
+Content/*
 !Content/BlueprintComponents/
 !Content/BlueprintLibrary/
 StudyJumpMechanic.opensdf

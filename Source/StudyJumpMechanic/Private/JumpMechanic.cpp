@@ -19,7 +19,9 @@ void UJumpMechanic::BeginPlay()
 {
 	Super::BeginPlay();
 	//UKismetSystemLibrary::PrintString(this, "printStringTest", true, true, ,5.0F);
-	
+	//float jumpHeight = 300.0f;
+	//AActor *MyCharacter = AActor::GetOwner;
+	//UCharacterMovementComponent::JumpZVelocity = Sqrt(2 * UCharacterMovementComponent.GetGravityZ() * UCharacterMovementComponent.GravityScale * jumpHeight);
 	
 }
 
