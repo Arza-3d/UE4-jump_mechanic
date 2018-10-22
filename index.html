@@ -38,7 +38,7 @@
           </ul>
         </section>
       </div>
-      <div data-title-r3="actor component">
+      <div data-title-r3="main BPcomponent">
         <h2>parent class</h2>
         <h3>JumpMechanic</h3>
         <section>
@@ -79,6 +79,28 @@
             <li><code>InputActionJumpReleased</code></li>
             <li><code>EventOnLanded</code></li>
           </ul>
+        </section>
+      </div>
+      <div data-title-r3="additional BPcomponent">
+        <h2>additional BPComponent</h2>
+        <h3>JumpTracker</h3>
+        <section>
+          <p>This is used to show the jump track and show this data:</p>
+          <ul>
+            <li>jump height (z)</li>
+            <li>jump distance (x, y)</li>
+            <li>jump time (optional)</li>
+          </ul>
+          <hr>
+          <p>How to use:</p>
+          <ol>
+            <li>attach this component to <code>character</code> blueprint</li>
+            <li>on <code>EventOnJumped</code> call <code>JumpTracker.EventOnJumped</code> event</li>
+          </ol>
+        </section>
+        <h3>KeyboardTracker</h3>
+        <section>
+          <p>This is used to show the button input that is pressed during the demo</p>
         </section>
       </div>
     </main>
