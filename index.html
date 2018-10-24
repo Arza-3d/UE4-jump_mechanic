@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://image.ibb.co/nqbdHJ/titlelogo.png" rel="icon">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
     <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
   </head>
@@ -16,38 +19,177 @@
     <header>
       <h1>jump mechanic</h1>
       <h4>jump mechanic study in Unreal Engine 4</h4>
+      <table>
+        <tr>
+          <td>game engine</td>
+          <td>UE4.19.2</td>
+        </tr>
+        <tr>
+          <td>project template</td>
+          <td>Third Person</td>
+        </tr>
+        <tr>
+          <td>assets that are used</td>
+          <td>
+            <a href="https://docs.unrealengine.com/en-us/Resources/ContentExamples">content example</a>
+            <a href="https://www.unrealengine.com/marketplace/paragon-feng-mao">Feng Mao</a>
+            <a href="https://www.unrealengine.com/marketplace/paragon-muriel">Muriel</a>
+            <a href="https://www.unrealengine.com/marketplace/paragon-kallari">Kallari</a>
 
+            <details>
+              <summary>more</summary>
+
+            </details>
+          </td>
+        </tr>
+      </table>
       <p>......</p>
     </header>
     <main class="aside-nav-target-r3">
       <div data-title-r3="basic">
         <h2>basic physics of jump</h2>
+        <!--
+        <h3>testing MathJax</h3>
+        <section>
+          When $$a \ne 0$$, there are two solutions to \(ax^2 + bx + c = 0\)
+          and they are
+          $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+          $$v_z(t)=v_z(0) - at$$
+          $$0 = v_z({{{{t_p}_e}_a}_k}) - at$$
+          $$0 = v_z({t_p}{_e}{_a}{_k}) - at$$
+          $$0 = v_z(t_{peak}) - at$$
+          $$[x_1]_2$$
+          $$
+          E_0 = mc^2 \\
+          E = \frac{mc^2}{\sqrt{1-\frac{v^2}{c^2}}}
+          $$
+          \(g =\) <code>Round(CharacterMovement.GetGravity()) * CharacterMovement.GravityScale</code>
+        </section>
+      -->
+        <h3>base equation</h3>
+        <section>
+          $$ v_{z_{(t_{peak})}} = 0 $$
+          $$v_{z_{(t)}} = v_{z_0} - gt$$
+          $$0 = v_{z_0} - gt_{peak}$$
+        </section>
         <h3>Jump cheatsheet</h3>
         <section>
-          <p>Below are quick example on setting up character jump:</p>
-          <ul>
+          <p>Here are some possible problem to solve related to jump:</p>
+          <ol>
             <li>
-              Make character jump 3 meter:
-              <br><code>CharacterMovement.JumpZVelocity = </code>
+              If a cat has to pass box with <b class="green-r3">\(h\)</b> height,
               <br>
-              <pre>float jumpHeight = 300.0f;<br>UCharacterMovementComponent.JumpZVelocity = Sqrt(2 * UCharacterMovementComponent.GetGravityZ() * UCharacterMovementComponent.GravityScale * jumpHeight);</pre>
+              how much initial jump velocity that the cat needs:
+              <img src="https://image.ibb.co/gzYsaq/problem1.jpg" alt="problem1">
+              Using this equation:
+              $$v_{z0} = \sqrt{2gh}$$
+
+              <table class="math-def-r3">
+                <thead>
+                  <tr>
+                    <th>symbol</th>
+                    <th>definition</th>
+                    <th>blueprint</th>
+                    <th title="editable inside character class?">editable?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>\(v_{z0}\)</td>
+                    <td>initial z velocity</td>
+                    <td><img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz"></td>
+                    <td>yes</td>
+                  </tr>
+                  <tr>
+                    <td>\(g\)</td>
+                    <td>gravity</td>
+                    <td><img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity"></td>
+                    <td>only <code>GravityScale</code></td>
+                  </tr>
+                  <tr>
+                    <td>\(h\)</td>
+                    <td>max jump height</td>
+                    <td></td>
+                    <td>no</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              for the cat to pass the box with height <b class="green-r3">\(h\)</b> = <input type="number" min="0" onchange="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')"  onclick="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')" id="findJumpZVelocityWithMaxHeight-r3x0" value="40"> \(cm\),
+              <br>then the cat at least need <br><code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocityWithMaxHeight-r3x">283.47</b> \(cm/s\)
+              <script>
+                function findJumpZVelocity1(printTarget, inputTarget) {
+                  var jumpHeight =  document.getElementById(inputTarget).value;
+                  jumpHeight = Number(jumpHeight);
+                  var x2 = Math.sqrt(2*980*jumpHeight);
+                  x2 = x2.toFixed(2);
+                  $(printTarget).html(x2);
+                }
+              </script>
             </li>
+            <hr>
             <li>
-              Make character jump 3 meter and 2 second:
-            </li>
-          </ul>
+              If a cat in small room with ceiling height <b class="green-r3">\(h\)</b> need to pass gap with <b class="green-r3">\(l\)</b> distance,<br>
+              how much vertical and horizontal speed the cat need?
+              <img src="https://image.ibb.co/hakxaq/problem2.jpg" alt="problem2">
+              <br>
+              $$v_{xy} = \frac{gl}{2v_{z0}}$$
+              <table class="math-def-r3">
+                <thead>
+                  <tr>
+                    <th>symbol</th>
+                    <th>definition</th>
+                    <th>blueprint</th>
+                    <th title="editable inside character class?">editable?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>\(v_{xy}\)</td>
+                    <td>initial xy velocity</td>
+                    <td><img src="https://image.ibb.co/cmXhrV/height.jpg" alt="height"></td>
+                    <td>yes</td>
+                  </tr>
+                  <tr>
+                    <td>\(l\)</td>
+                    <td>jump max horizontal distance</td>
+                    <td></td>
+                    <td>no</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              if celing height <b class="green-r3">\(h\)</b> = <input type="number" value="40" min="0" onchange="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0')"
+              onclick="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0')"
+               id="findJumpZVelocity2-r3x0"> \(cm\)
+              <br>and the gap distance <b class="green-r3">\(l\)</b> = <input type="number" value="150" min="0">\(cm\)
+              <br>then for the cat to not hit ceiling, the cat;<br>maximum <code>JumpZVelocity</code> \(\approx\) <span id="findJumpZVelocity2-r3x">283.4784</span> \(cm/s\)<br> and minimum <code>MaxWalkSpeed</code> \(\approx\) <span id="finddMaxJumpDistance-r3x">283.4784</span> \(cm/s\) </li>
+              <script>
+                function findJumpZVelocityAndMaxWalkVelocity() {
+                  
+                }
+              </script>
+          </ol>
         </section>
       </div>
       <div data-title-r3="main BPcomponent">
         <h2>parent class</h2>
         <h3>JumpMechanic</h3>
         <section>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class</code>
+          </a>
           <p><code>JumpMechanic</code> is <code>BlueprintComponent</code> that will be the <b>parent class</b> of all jump mechanics that will be created in this project.</p>
-          <p>Will have this method:</p>
+          <p>Event &amp; function:</p>
           <ul>
             <li>
-              You can call <code>GetJumpPeak</code> <b>event</b> that will call <code>JumpPeak</code> <b>event dispatcher</b> at the right time. <br>That right time is when the owner <code>Character</code> reach <var>v<sub>z</sub> velocity = 0</var>.<br> Some jump mechanic will need it, some don't, if you wanna activate it must be activated after <code><em>Character</em>.Jump();</code>
+              <code>GetJumpPeak</code> will return <code>JumpPeak</code> <b>event dispatcher</b> call when <code>Character</code> reach the highest point of the jump. <br>This will be <u>calculated per frame</u> by checking, is <code>Character</code> \(v_z \leq 0\), if it is do <code>JumpPeak</code> call.
             </li>
+            <li>
+              <code>GetJumpPeak_estimated</code> has same function with <code>GetJumpPeak</code>, <br>
+              but this will <u>calculated once</u>, by finding out the time <code>Character</code> reach the highest point of the jump with: $$t_{peak} = v_{z_{(t_0)}}/g$$
+            </li>
+            <!--
             <li>
               <code><span style="color:green">float</span> CalculateJumpZVelocity(<span style="color:green">float</span> Height);</code> is function that calculate <code>JumpZVelocity</code> based on the <b>desired max jump height</b>.
               <br>
@@ -62,9 +204,7 @@
                 <code>Character.JumpZVelocity = _JumpMechanic.CalculateJumpZVelocity(<b style="color:green">200</b>);</code>
               </details>
               <br>
-            </li>
-            <li>
-              <code>void SetJumpZVelocityAndGravityScale(float JumpHeight, float JumpTime);</code>
+            -->
             </li>
           </ul>
         </section>
@@ -73,11 +213,11 @@
         <h3>JumpThenGlide</h3>
         <section>
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code>JumpMechanic class</code>
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class</code>
           </a>
           &#9658;
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code>JumpThenGlide class</code>
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide class</code>
           </a>
           <p>Character able to glide in the air after jump. <br>I think Rayman and Spyro used this jump mechanic.</p>
           <p>This component contains these events:</p>
@@ -93,7 +233,11 @@
         <p>These are additional blueprint components that is used to help showing data related to character jump.</p>
         <h3>JumpTracker</h3>
         <section>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpTracker/JumpTracker.uasset"><code><img src="https://image.ibb.co/dOztyA/blueprint-CP.jpg" alt="blueprint-CP">JumpTracker class</code></a> +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpTracker/JumpTracker.uasset">
+            <code>
+            <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpTracker class
+            </code>
+          </a> +
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpTracker/Component"><code>📁JumpTracker  component</code></a>
           <p>This is used to show the jump track and show this data:</p>
           <ul>
@@ -104,9 +248,9 @@
           <hr>
           <p>How to use:</p>
           <ol>
-            <li>attach this actor component to <code>character</code> blueprint</li>
-            <li>on <code>EventOnJumped</code> call <code>JumpTracker.EventOnJumped</code> event</li>
-            <li>on <code>EventOnLanded</code> call <code>JumpTracker.EventOnLanded</code> event</li>
+            <li>attach this actor component to <code>character</code> blueprint, then inside <code>character</code> event graph;</li>
+            <li>... on <code>EventOnJumped</code> call <code>JumpTracker.EventOnJumped</code></li>
+            <li>... on <code>EventOnLanded</code> call <code>JumpTracker.EventOnLanded</code></li>
           </ol>
         </section>
         <h3>KeyboardTracker</h3>
@@ -116,5 +260,6 @@
       </div>
     </main>
     <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3.min.js"></script>
+
   </body>
 </html>
