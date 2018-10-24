@@ -79,7 +79,7 @@
             <li>
               If a cat has to pass box with <b class="green-r3">\(h\)</b> height,
               <br>
-              how much initial jump velocity that the cat needs:
+              how much initial jump z velocity <span class="red-r3">\(v_{z0}\)</span> that the cat needs:
               <img src="https://image.ibb.co/gzYsaq/problem1.jpg" alt="problem1">
               Using this equation:
               $$v_{z0} = \sqrt{2gh}$$
@@ -116,7 +116,7 @@
               </table>
               <br>
               for the cat to pass the box with height <b class="green-r3">\(h\)</b> = <input type="number" min="0" onchange="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')"  onclick="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')" id="findJumpZVelocityWithMaxHeight-r3x0" value="40"> \(cm\),
-              <br>then the cat at least need <br><code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocityWithMaxHeight-r3x">283.47</b> \(cm/s\)
+              <br>then the cat at least need <br><code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocityWithMaxHeight-r3x">280.00</b> \(cm/s\)
               <script>
                 function findJumpZVelocity1(printTarget, inputTarget) {
                   var jumpHeight =  document.getElementById(inputTarget).value;
@@ -130,7 +130,8 @@
             <hr>
             <li>
               If a cat in small room with ceiling height <b class="green-r3">\(h\)</b> need to pass gap with <b class="green-r3">\(l\)</b> distance,<br>
-              how much vertical and horizontal speed the cat need?
+              how much cat z-initial speed so it won't hit the ceiling?
+              <br>and how fast the cat should run before the jump to pass that gap?
               <img src="https://image.ibb.co/hakxaq/problem2.jpg" alt="problem2">
               <br>
               $$v_{xy} = \frac{gl}{2v_{z0}}$$
@@ -159,14 +160,19 @@
                 </tbody>
               </table>
               <br>
-              if celing height <b class="green-r3">\(h\)</b> = <input type="number" value="40" min="0" onchange="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0')"
-              onclick="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0')"
+              if celing height <b class="green-r3">\(h\)</b> = <input type="number" value="40" min="0" onchange="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
+              onclick="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
                id="findJumpZVelocity2-r3x0"> \(cm\)
-              <br>and the gap distance <b class="green-r3">\(l\)</b> = <input type="number" value="150" min="0">\(cm\)
-              <br>then for the cat to not hit ceiling, the cat;<br>maximum <code>JumpZVelocity</code> \(\approx\) <span id="findJumpZVelocity2-r3x">283.4784</span> \(cm/s\)<br> and minimum <code>MaxWalkSpeed</code> \(\approx\) <span id="finddMaxJumpDistance-r3x">283.4784</span> \(cm/s\) </li>
+              <br>and the gap distance <b class="green-r3">\(l\)</b> = <input type="number" value="150" min="0" id="jumpDistance-r3x2" onchange="findMaxWalkVelocity()" onclick="findMaxWalkVelocity()">\(cm\)
+              <br>then for the cat to not hit ceiling, the cat;<br>maximum <code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocity2-r3x">280.00</b> \(cm/s\)<br> and for cat to jump that gap it need <br>minimum <code>MaxWalkSpeed</code> \(\approx\) <b id="finddMaxJumpDistance-r3x">1837.50</b> \(cm/s\) </li>
               <script>
-                function findJumpZVelocityAndMaxWalkVelocity() {
-                  
+                function findMaxWalkVelocity() {
+
+                    var jumpZ = $('#findJumpZVelocity2-r3x0').val(),
+                        jumpDistance = $('#jumpDistance-r3x2').val();
+                    jumpZ = Number(jumpZ);
+                    jumpDistance = Number(jumpDistance);
+                    $("#finddMaxJumpDistance-r3x").html(((980*jumpDistance)/(2*jumpZ)).toFixed(2));
                 }
               </script>
           </ol>
