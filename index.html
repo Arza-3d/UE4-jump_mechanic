@@ -95,7 +95,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>\(v_{z0}\)</td>
+                    <td class="red-r3">\(v_{z0}\)</td>
                     <td>initial z velocity</td>
                     <td><img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz"></td>
                     <td>yes</td>
@@ -107,7 +107,7 @@
                     <td>only <code>GravityScale</code></td>
                   </tr>
                   <tr>
-                    <td>\(h\)</td>
+                    <td class="green-r3">\(h\)</td>
                     <td>max jump height</td>
                     <td></td>
                     <td>no</td>
@@ -116,7 +116,7 @@
               </table>
               <br>
               for the cat to pass the box with height <b class="green-r3">\(h\)</b> = <input type="number" min="0" onchange="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')"  onclick="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')" id="findJumpZVelocityWithMaxHeight-r3x0" value="40"> \(cm\),
-              <br>then the cat at least need <br><code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocityWithMaxHeight-r3x">280.00</b> \(cm/s\)
+              <br>then the cat at least need to jump with <br><span class="red-r3">\(v_{z0}\)</span> \(=\) <code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocityWithMaxHeight-r3x">280.00</b> \(cm/s\)
               <script>
                 function findJumpZVelocity1(printTarget, inputTarget) {
                   var jumpHeight =  document.getElementById(inputTarget).value;
@@ -129,10 +129,10 @@
             </li>
             <hr>
             <li>
-              If a cat in small room with ceiling height <b class="green-r3">\(h\)</b> need to pass gap with <b class="green-r3">\(l\)</b> distance,<br>
-              how much cat z-initial speed so it won't hit the ceiling?
-              <br>and how fast the cat should run before the jump to pass that gap?
-              <img src="https://image.ibb.co/hakxaq/problem2.jpg" alt="problem2">
+              If a cat in small room with ceiling distance above his head <b class="green-r3">\(h\)</b> need to pass gap with <b class="green-r3">\(l\)</b> distance,<br>
+              how much cat maximum z-initial speed <span class="red-r3">\(v_{z0}\)</span> so it won't hit the ceiling?
+              <br>and how fast the cat should run <span class="red-r3">\(v_{xy}\)</span> before the jump to pass that gap?
+              <img src="https://image.ibb.co/eYK3GV/problem2.jpg" alt="problem2">
               <br>
               $$v_{xy} = \frac{gl}{2v_{z0}}$$
               <table class="math-def-r3">
@@ -146,13 +146,13 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>\(v_{xy}\)</td>
+                    <td class="red-r3">\(v_{xy}\)</td>
                     <td>initial xy velocity</td>
                     <td><img src="https://image.ibb.co/cmXhrV/height.jpg" alt="height"></td>
                     <td>yes</td>
                   </tr>
                   <tr>
-                    <td>\(l\)</td>
+                    <td class="green-r3">\(l\)</td>
                     <td>jump max horizontal distance</td>
                     <td></td>
                     <td>no</td>
@@ -160,11 +160,11 @@
                 </tbody>
               </table>
               <br>
-              if celing height <b class="green-r3">\(h\)</b> = <input type="number" value="40" min="0" onchange="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
+              if celing distance above cat head <b class="green-r3">\(h\)</b> = <input type="number" value="40" min="0" onchange="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
               onclick="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
                id="findJumpZVelocity2-r3x0"> \(cm\)
               <br>and the gap distance <b class="green-r3">\(l\)</b> = <input type="number" value="150" min="0" id="jumpDistance-r3x2" onchange="findMaxWalkVelocity()" onclick="findMaxWalkVelocity()">\(cm\)
-              <br>then for the cat to not hit ceiling, the cat;<br>maximum <code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocity2-r3x">280.00</b> \(cm/s\)<br> and for cat to jump that gap it need <br>minimum <code>MaxWalkSpeed</code> \(\approx\) <b id="finddMaxJumpDistance-r3x">1837.50</b> \(cm/s\) </li>
+              <br>then for the cat to not hit ceiling, the cat;<br>maximum <span class="red-r3">\(v_{z0}\)</span> \(=\) <code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocity2-r3x">280.00</b> \(cm/s\)<br> and for cat to jump that gap it need <br>minimum <span class="red-r3">\(v_{xy}\)</span> \(=\)  <code>MaxWalkSpeed</code> \(\approx\) <b id="finddMaxJumpDistance-r3x">1837.50</b> \(cm/s\) </li>
               <script>
                 function findMaxWalkVelocity() {
 
