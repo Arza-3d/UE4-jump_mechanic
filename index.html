@@ -8,7 +8,7 @@
     <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
     </script>
-    <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
+    <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css?v=1.1" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
   </head>
   <body
@@ -20,6 +20,10 @@
       <h1>jump mechanic</h1>
       <h4>jump mechanic study in Unreal Engine 4</h4>
       <table>
+        <tr>
+          <td>author</td>
+          <td>Forest Guhareza</td>
+        </tr>
         <tr>
           <td>game engine</td>
           <td>Unreal Engine 4.19.2</td>
@@ -34,11 +38,11 @@
         </tr>
       </table>
       <p>
-        This project is just study on jump mechanics in UE4. The study will be done by recreating as many jump mechanics as possible in <code style="display:initial">📁Content/📁BlueprintComponents/📁JumpMechanic</code>.
-        Every jump mechanic will be contains in <b>blueprint component</b> for reusability.
+        This project <mark>is focus study on jump mechanics in UE4</mark>. The study will be done by recreating as many jump mechanics as possible in <code style="display:initial">📁Content/📁BlueprintComponents/📁JumpMechanic</code>. Following modular concept
+        every jump mechanic will be contains in <b>blueprint component</b> for reusability.
       </p>
       <p>
-        CharacterBP and animBP examples are provided in this project repo in <code>📁Content/📁Character</code>. These examples are created using Epic Paragon Asset, which <u style="text-decoration-color: blue">is not included</u> inside this repo.
+        The usage examples of this jump mechanic component inside characterBP and animationBP are provided in this project repository in <code>📁Content/📁CharacterExamples</code>. These examples are created using Epic Paragon Asset, which <u style="text-decoration-color: red">are not included</u> inside this repo.
       </p>
       <p>
         So in case you download this project, for the CharacterBP example to work, you must import these Paragon asset inside the project:
@@ -50,7 +54,7 @@
         <li><a href="https://www.unrealengine.com/marketplace/paragon-kallari">Kallari</a></li>
       </ul>
       <p>
-        Only the CharacterBP examples that have dependencies to Paragon asset, the <u style="text-decoration-color:green">blueprint components of jump mechanic  don't have that dependencies</u>.
+        Only the CharacterBP examples that have dependencies to Paragon asset, the <u style="text-decoration-color:blue">blueprint components of jump mechanic  don't have that dependencies</u>.
         <br>
         <a href="https://codeload.github.com/Arza-3d/UE4-jump-mechanic/zip/master"><button>Project Download (.zip)</button></a>
       </p>
@@ -123,13 +127,44 @@
             </code>
           </a>
           &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/SprintJump.uasset">
+          <br>
+          <code>
+            📁Content/📁BlueprintComponents/📁JumpMechanic/📁ChildClass/
+          </code>
+          <!--
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump.uasset">
             <code>
               <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump class
             </code>
           </a>
+          -->
+          <hr>
+
+          <p><b>Sprint jump</b> : character ability to jump higher when they jump after sprinting.</p>
+
           <p>
-            Character has normal jump which has constant jump height, but if it run before jump it will have jump which the height of that jump will be based on how fast it ran before the jump. Simply it is like in Mario Bros jump.
+            I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> game use this jump mechanic.
+          </p>
+
+          <hr>
+          <p>So this is the example of <code>SprintJump</code> used by character,
+          So this is what's gonna happen:</p>
+          <ul>
+              <li><kbd style="color:transparent">Space</kbd> = default jump</li>
+              <li><kbd>W</kbd> = move forward</li>
+              <li><kbd>Shift</kbd> + <kbd>W</kbd> = sprint forward</li>
+              <li>
+                <kbd>Shift</kbd> + <kbd>W</kbd> , then <kbd style="color: transparent">Space</kbd> = <b>sprint jump</b>!!
+              </li>
+          </ul>
+          <video src="D:\vid\Captures\test2.mp4" controls width="80%"></video>
+          <p>and this is the blueprint:</p>
+          <img src="https://image.ibb.co/bxYgdA/sprint-Jump-Graph.jpg" alt="sprint-Jump-Graph">
+          <p>
+            make sure <code><span class="grey-r3">SprintJump.</span>MaxJumpZVelocity</code> &gt; <code>JumpZVelocity</code>,
+            <br> and
+            <br>
+            make sure <code><span class="grey-r3">SprintJump.</span>MaxSprintSpeed</code> &gt; <code>MaxWalkSpeed</code>.
           </p>
         </section>
 
@@ -141,7 +176,7 @@
             </code>
           </a>
           &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/SprintJump.uasset">
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump.uasset">
             <code>
               <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump_auto class
             </code>
@@ -149,6 +184,7 @@
           <p>
             Character has no sprint input, so the normal jump will always depended on how fast it walked before the jump. I think Unravel used this system.
           </p>
+
         </section>
 
         <h3>Secondary Jump</h3>
