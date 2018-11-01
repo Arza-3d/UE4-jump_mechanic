@@ -10,12 +10,6 @@
     </script>
     <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css?v=1.1" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
-    <style>
-    code code {
-      background-color: transparent;
-      border: none;
-    }
-    </style>
   </head>
   <body
     data-repo-r3="https://github.com/Arza-3d/UE4-jump-mechanic"
@@ -44,44 +38,26 @@
         </tr>
       </table>
       <p>
-        This project <mark>is focus study on jump mechanics in UE4</mark>. The study will be done by recreating as many jump mechanics as possible in <code style="display:initial">📁Content/📁BlueprintComponents/📁JumpMechanic</code>. Following modular concept
-        every jump mechanic will be contained in <b>blueprint component</b> for reusability.
+        This project <mark>is focus study on jump mechanics in UE4</mark>. The study will be done by recreating as many <b>jump mechanics</b> as possible in:<br> <code style="display:initial">📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpMechanic/ChildClass">📁ChildClass</a></code>. <br>Every jump mechanic will be contained in <b>blueprint component</b> for reusability.
       </p>
-      <p>
-        The usage examples of this jump mechanic component inside characterBP and animationBP are provided in this project repository in <code>📁Content/📁CharacterExamples</code>. These examples are created using Epic Paragon Asset, which <u style="text-decoration-color: red">are not included</u> inside this repo.
-      </p>
-      <p>
-        So in case you download this project, for the CharacterBP example to work, you must import these Paragon asset inside the project:
-      </p>
-      <ul>
-        <li><a href="https://www.unrealengine.com/marketplace/paragon-feng-mao">Feng Mao</a></li>
-        <li><a href="https://www.unrealengine.com/marketplace/paragon-gadget">Gadget</a></li>
-        <li><a href="https://www.unrealengine.com/marketplace/paragon-muriel">Muriel</a></li>
-        <li><a href="https://www.unrealengine.com/marketplace/paragon-kallari">Kallari</a></li>
-      </ul>
-      <p>
-        Only the CharacterBP examples that have dependencies to Paragon asset, the <u style="text-decoration-color:blue">blueprint components of jump mechanic  don't have that dependencies</u>.
-        <br>
-        <a href="https://codeload.github.com/Arza-3d/UE4-jump-mechanic/zip/master"><button>Project Download (.zip)</button></a>
-      </p>
-
+      <p>note: <u style="text-decoration-color:red">Epic assets that are used in this project are <b>gitignored</b></u>.<br>Project download link: <button><a href="https://codeload.github.com/Arza-3d/UE4-jump-mechanic/zip/master">project(zip)</a></button> </p>
 
     </header>
     <main class="aside-nav-target-r3">
 
-      <div data-title-r3="main BPcomponent">
-
-
-        <h2>jump mechanic:</h2>
+      <div data-title-r3="jump mechanics:">
+        <h2>jump ability:</h2>
         <p>
-          These <b>jump mechanic BP</b> components are ready to be used for your <code>Character</code>, <br>just remember:<br> <mark>jump mechanic BP components  only deal with jump physics</mark>, SFX and animation, which is character specific, is done inside characterBP and animBP.
+          <mark>jump mechanic BP components  only deal with jump physics</mark>, SFX and animation, which is character specific, is done inside characterBP and animBP.
         </p>
-        <p>Actually you don't need to download all the project to use this jump mechanic BP, you can just copy it in your project. Since every jump mechanic BP's are children of <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+        <p>
+          Actually you don't need to download all the project to use this jump mechanic BP, you can just copy it in your project. Since every jump mechanic BP's are children of <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
           <code>
             <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
           </code>
-        </a>, you also need to copy that. I will put the download link of the file in the first line of every section, just <mark>make sure you put it in the same folder address</mark>, and it will work.
-        The address are:
+          </a>, you also need to copy that. I will put the download link of the file in the first line of every section, just <mark>make sure you put it in the same folder address</mark>, and it will work.
+          The address are:
+        </p>
         <ul>
           <li>
             parent address:<br>
@@ -100,27 +76,6 @@
             </code>
           </li>
         </ul>
-        </p>
-
-        <h3>JumpThenGlide</h3>
-        <section>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
-          </a>
-          &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenGlide.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide</code>
-          </a>
-          <hr>
-          <video src="D:\vid\Captures\JumpThenGlide.mp4" controls width="80%"></video>
-          <p>Character able to glide in the air after jump. <br>I think Rayman and Spyro used this jump mechanic.</p>
-          <p>This component contains these events:</p>
-          <ul>
-            <li><code>InputActionJumpPressed</code> or <code>InputActionJumpPressed_estimated</code></li>
-            <li><code>InputActionJumpReleased</code></li>
-            <li><code>EventOnLanded </code></li>
-          </ul>
-        </section>
 
         <h3>SprintJump</h3>
         <section>
@@ -150,11 +105,12 @@
               FengMaoCharBP_SprintJump
             </code>
           </a>
+          <hr>
           <p>
             <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
           </p>
           <p>
-            I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> and <a href="https://en.wikipedia.org/wiki/Pepsiman_(video_game)">Pepsiman</a> game use this jump mechanic.
+            I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> and <a href="https://en.wikipedia.org/wiki/Pepsiman_(video_game)">Pepsiman</a> use this jump mechanic.
           </p>
 
           <hr>
@@ -201,6 +157,34 @@
           </a>
           <hr>
           <video src="D:\vid\Captures\SecondaryJump.mp4" controls width="80%"></video>
+          <hr>
+          <p>
+            <b>Secondary jump</b>: when character has 2 set of jump modes. There are the default jump and the secondary jump (which usually is higher than the default jump)
+          </p>
+          <p>Rikimaru and Ayame from <a href="https://en.wikipedia.org/wiki/Tenchu_2:_Birth_of_the_Stealth_Assassins">Tenchu 2</a> use secondary jump mechanism.</p>
+        </section>
+
+        <h2>fall ability:</h2>
+        <p>Below is the jump mechanic that is active after the fall / after character reach jump apex.</p>
+        <h3>JumpThenGlide</h3>
+        <section>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
+          </a>
+          &#9658;
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenGlide.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide</code>
+          </a>
+          <hr>
+          <video src="D:\vid\Captures\JumpThenGlide.mp4" controls width="80%"></video>
+          <hr>
+          <p>Character able to glide in the air after jump. <br>I think <a href="https://en.wikipedia.org/wiki/Rayman_Legends">Rayman</a> and Spyro used this jump mechanic.</p>
+          <p>This component contains these events:</p>
+          <ul>
+            <li><code>InputActionJumpPressed</code> or <code>InputActionJumpPressed_estimated</code></li>
+            <li><code>InputActionJumpReleased</code></li>
+            <li><code>EventOnLanded </code></li>
+          </ul>
         </section>
 
         <h2>jump mechanic parent</h2>
