@@ -70,51 +70,27 @@
     <main class="aside-nav-target-r3">
 
       <div data-title-r3="main BPcomponent">
-        <h2>parent class</h2>
-        <h3>JumpMechanic</h3>
-        <section>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class</code>
-          </a>
-          <p><code>JumpMechanic</code> is <code>BlueprintComponent</code> that will be the <b>parent class</b> of all jump mechanics that will be created in this project.</p>
-          <p>Event &amp; function:</p>
-          <ul>
-            <li>
-              <code>GetJumpPeak</code> will return <code>JumpPeak</code> <b>event dispatcher</b> call when <code>Character</code> reach the highest point of the jump. <br>This will be <u>calculated per frame</u> by checking, is <code>Character</code> \(v_z \leq 0\), if it is do <code>JumpPeak</code> call.
-            </li>
-            <li>
-              <code>GetJumpPeak_estimated</code> has same function with <code>GetJumpPeak</code>, <br>
-              but this will <u>calculated once</u>, by finding out the time <code>Character</code> reach the highest point of the jump with: $$t_{peak} = v_{z_{(t_0)}}/g$$
-            </li>
-            <!--
-            <li>
-              <code><span style="color:green">float</span> CalculateJumpZVelocity(<span style="color:green">float</span> Height);</code> is function that calculate <code>JumpZVelocity</code> based on the <b>desired max jump height</b>.
-              <br>
-              <details>
-                <summary>the math of the function:</summary>
-                <img src="https://image.ibb.co/fA2Od0/Gravity-Formula-Copy.jpg" alt="Gravity-Formula-UE4">
-              </details>
-              <details>
-                <summary>example:</summary>
 
-                  Make character that jump <b style="color:green">200</b> cm. So the <code>JumpZVelocity</code> is:
-                <code>Character.JumpZVelocity = _JumpMechanic.CalculateJumpZVelocity(<b style="color:green">200</b>);</code>
-              </details>
-              <br>
-            -->
-            </li>
-          </ul>
-        </section>
 
-        <h2>child class</h2>
+        <h2>jump mechanic:</h2>
+        <p>
+          These jump mechanic BP components are ready to be used for your <code>Character</code>, <br>just remember:<br> <mark>jump mechanic BP components  only deal with jump physics</mark>, SFX and animation, which is character specific is done inside characterBP and animBP.
+        </p>
+        <p>Actually you don't need to download all the project to use this jump mechanic BP, you can just copy it in your project. Since every jump mechanic BP's are children of <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+          <code>
+            <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+          </code>
+        </a>, you also need to copy that. I will put the download link of the file in the first line of every section, just make sure you put it in the same folder and it will work.
+        </p>
+
         <h3>JumpThenGlide</h3>
         <section>
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class</code>
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
           </a>
           &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpThenGlide.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide class</code>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenGlide.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide</code>
           </a>
           <p>Character able to glide in the air after jump. <br>I think Rayman and Spyro used this jump mechanic.</p>
           <p>This component contains these events:</p>
@@ -129,46 +105,45 @@
         <section>
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
             <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class
+              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
             </code>
           </a>
           &#9658;
-          <br>
-          <code>
-            📁Content/📁BlueprintComponents/📁JumpMechanic/📁ChildClass/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump.uasset">
-              <code>
-                <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump class
-              </code>
-            </a>
-          </code>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump.uasset">
+            <code>
+              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump
+            </code>
+          </a>
           <hr>
-
-          <p><b>Sprint jump</b> : character ability to jump higher when they jump after sprinting.</p>
-
+          <video src="D:\vid\Captures\SprintJump.mp4" controls width="80%"></video>
+          <br>
+          example use in video: 
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SprintJump/FengMaoAnimBP_SprintJump.uasset">
+            <code>
+              FengMaoAnimBP_SprintJump
+            </code>
+          </a>
+          +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SprintJump/FengMaoCharBP_SprintJump.uasset">
+            <code>
+              FengMaoCharBP_SprintJump
+            </code>
+          </a>
+          <p>
+            <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
+          </p>
           <p>
             I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> game use this jump mechanic.
           </p>
 
           <hr>
-          <p>So this is the example of <code>SprintJump</code> used by character,
-          So this is what's gonna happen:</p>
-          <ul>
-              <li><kbd style="color:transparent">Space</kbd> = default jump</li>
-              <li><kbd>W</kbd> = move forward</li>
-              <li><kbd>Shift</kbd> + <kbd>W</kbd> = sprint forward</li>
-              <li>
-                <kbd>Shift</kbd> + <kbd>W</kbd> , then <kbd style="color: transparent">Space</kbd> = <b>sprint jump</b>!!
-              </li>
-          </ul>
-          <video src="D:\vid\Captures\SprintJump.mp4" controls width="80%"></video>
-          <p>and this is the blueprint:</p>
+          <p>Implementation example of <code>SprintJump</code> inside character blueprint:</p>
           <img src="https://image.ibb.co/bxYgdA/sprint-Jump-Graph.jpg" alt="sprint-Jump-Graph">
-          <p>
-            make sure <code><span class="grey-r3">SprintJump.</span>MaxJumpZVelocity</code> &gt; <code>JumpZVelocity</code>,
-            <br> and
-            <br>
-            make sure <code><span class="grey-r3">SprintJump.</span>MaxSprintSpeed</code> &gt; <code>MaxWalkSpeed</code>.
-          </p>
+          <p>Note;</p>
+          <ul>
+            <li>make sure <code><span class="grey-r3">SprintJump.</span>MaxJumpZVelocity</code> &gt; <code>JumpZVelocity</code>,</li>
+            <li>make sure <code><span class="grey-r3">SprintJump.</span>MaxSprintSpeed</code> &gt; <code>MaxWalkSpeed</code>.</li>
+          </ul>
         </section>
 
         <h3>SprintJump_auto</h3>
@@ -204,6 +179,42 @@
             </code>
           </a>
 
+        </section>
+
+        <h2>jump mechanic parent</h2>
+        <h3>JumpMechanic</h3>
+        <section>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class</code>
+          </a>
+          <p><code>JumpMechanic</code> is <code>BlueprintComponent</code> that will be the <b>parent class</b> of all jump mechanics that will be created in this project.</p>
+          <p>Event &amp; function:</p>
+          <ul>
+            <li>
+              <code>GetJumpPeak</code> will return <code>JumpPeak</code> <b>event dispatcher</b> call when <code>Character</code> reach the highest point of the jump. <br>This will be <u>calculated per frame</u> by checking, is <code>Character</code> \(v_z \leq 0\), if it is do <code>JumpPeak</code> call.
+            </li>
+            <li>
+              <code>GetJumpPeak_estimated</code> has same function with <code>GetJumpPeak</code>, <br>
+              but this will <u>calculated once</u>, by finding out the time <code>Character</code> reach the highest point of the jump with: $$t_{peak} = v_{z_{(t_0)}}/g$$
+            </li>
+            <!--
+            <li>
+              <code><span style="color:green">float</span> CalculateJumpZVelocity(<span style="color:green">float</span> Height);</code> is function that calculate <code>JumpZVelocity</code> based on the <b>desired max jump height</b>.
+              <br>
+              <details>
+                <summary>the math of the function:</summary>
+                <img src="https://image.ibb.co/fA2Od0/Gravity-Formula-Copy.jpg" alt="Gravity-Formula-UE4">
+              </details>
+              <details>
+                <summary>example:</summary>
+
+                  Make character that jump <b style="color:green">200</b> cm. So the <code>JumpZVelocity</code> is:
+                <code>Character.JumpZVelocity = _JumpMechanic.CalculateJumpZVelocity(<b style="color:green">200</b>);</code>
+              </details>
+              <br>
+            -->
+            </li>
+          </ul>
         </section>
       </div>
       <div data-title-r3="additional BPcomponent">
