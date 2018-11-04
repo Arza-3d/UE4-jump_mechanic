@@ -8,7 +8,7 @@
     <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
     </script>
-    <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css?v=1.1" rel="stylesheet" type="text/css">
+    <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
   </head>
   <body
@@ -40,42 +40,46 @@
       <p>
         This project <mark>is focus study on jump mechanics in UE4</mark>. The study will be done by recreating as many <b>jump mechanics</b> as possible in:<br> <code style="display:initial">📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpMechanic/ChildClass">📁ChildClass</a></code>. <br>Every jump mechanic will be contained in <b>blueprint component</b> for reusability.
       </p>
-      <p>note: <u style="text-decoration-color:red">Epic assets that are used in this project are <b>gitignored</b></u>.<br>Project download link: <button><a href="https://codeload.github.com/Arza-3d/UE4-jump-mechanic/zip/master">project(zip)</a></button> </p>
+      <p>
+        note: <u style="text-decoration-color:red">Epic assets that are used in this project are <b>gitignored</b></u>.<br>Project download link: <button><a href="https://codeload.github.com/Arza-3d/UE4-jump-mechanic/zip/master">project(zip)</a></button>
+      </p>
 
     </header>
     <main class="aside-nav-target-r3">
 
       <div data-title-r3="jump mechanics:">
         <h2>jump ability:</h2>
-        <p>
-          <mark>jump mechanic BP components  only deal with jump physics</mark>, SFX and animation, which is character specific, is done inside characterBP and animBP.
-        </p>
-        <p>
-          Actually you don't need to download all the project to use this jump mechanic BP, you can just copy it in your project. Since every jump mechanic BP's are children of <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-          <code>
-            <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
-          </code>
-          </a>, you also need to copy that. I will put the download link of the file in the first line of every section, just <mark>make sure you put it in the same folder address</mark>, and it will work.
-          The address are:
-        </p>
-        <ul>
-          <li>
-            parent address:<br>
+        <div>
+          <p>
+            <mark>jump mechanic BP components  only deal with jump physics</mark>, SFX and animation, which is character specific, is done inside characterBP and animBP.
+          </p>
+          <p>
+            Actually you don't need to download all the project to use this jump mechanic BP, you can just copy it in your project. Since every jump mechanic BP's are children of <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
             <code>
-              📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+            </code>
+            </a>, you also need to copy that. I will put the download link of the file in the first line of every section, just <mark>make sure you put it in the same folder address</mark>, and it will work.
+            The address are:
+          </p>
+          <ul>
+            <li>
+              parent address:<br>
               <code>
-                <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                <code>
+                  <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                </code>
+              </a>
               </code>
-            </a>
-            </code>
-          </li>
-          <li>
-            <b>The jump mechanic BP</b> (children) address:<br>
-            <code>
-              📁Content/📁BlueprintComponents/📁JumpMechanic/📁ChildClass/
-            </code>
-          </li>
-        </ul>
+            </li>
+            <li>
+              <b>The jump mechanic BP</b> (children) address:<br>
+              <code>
+                📁Content/📁BlueprintComponents/📁JumpMechanic/📁ChildClass/
+              </code>
+            </li>
+          </ul>
+        </div>
 
         <h3>SprintJump</h3>
         <section>
@@ -165,7 +169,9 @@
         </section>
 
         <h2>fall ability:</h2>
-        <p>Below is the jump mechanic that is active after the fall / after character reach jump apex.</p>
+        <p>
+          Below is the jump mechanic that is active after the fall / after character reach jump apex.
+        </p>
         <h3>JumpThenGlide</h3>
         <section>
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
@@ -178,13 +184,37 @@
           <hr>
           <video src="D:\vid\Captures\JumpThenGlide.mp4" controls width="80%"></video>
           <hr>
-          <p>Character able to glide in the air after jump. <br>I think <a href="https://en.wikipedia.org/wiki/Rayman_Legends">Rayman</a> and Spyro used this jump mechanic.</p>
-          <p>This component contains these events:</p>
-          <ul>
-            <li><code>InputActionJumpPressed</code> or <code>InputActionJumpPressed_estimated</code></li>
-            <li><code>InputActionJumpReleased</code></li>
-            <li><code>EventOnLanded </code></li>
-          </ul>
+          <p>
+            <b>Jump then glide</b>: character able to glide in the air after jump.
+          </p>
+          <p>
+            I think <a href="https://en.wikipedia.org/wiki/Rayman_Legends">Rayman</a> and <a href="https://en.wikipedia.org/wiki/Spyro">Spyro</a> used this jump mechanic.
+          </p>
+          <hr>
+          <p>
+            Implementation example of <code>JumpThenGlide</code> inside characterBP:
+          </p>
+        </section>
+
+        <h3>JumpThenFastDrop</h3>
+        <section>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
+          </a>
+          &#9658;
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenFastDrop.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenFastDrop</code>
+          </a>
+          <hr>
+          <video src="" width="80%"></video>
+          <hr>
+          <p>
+            <b>Jump then fast drop</b>: is character ability to drop fast after jump apex. Usually it is used as an attack.
+          </p>
+          <hr>
+          <p>
+            Implementation example of <code>JumpThenFastDrop</code> inside characterBP:
+          </p>
         </section>
 
         <h2>jump mechanic parent</h2>
@@ -360,6 +390,62 @@
                 }
               </script>
           </ol>
+        </section>
+      </div>
+      <div data-title-r3="equation">
+        <h2>equation cheatsheet</h2>
+
+        <h3>equation</h3>
+        <section>
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <path d="M 2 10 V 100 H 250" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"></path>
+                <path d="
+                M 2 100
+                C 52 10
+                  200 10
+                  250 100
+                "
+                stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"></path>
+                <line x1="126" y1="32" x2="126" y2="100" stroke="magenta" stroke-width="1" />
+                <line x1="2" y1="32" x2="126" y2="32" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)" stroke-dasharray="5 3" />
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(z\)</span>
+            <span style="position: absolute; top: 58px; left: 132px" class="magenta-r3">\(h\)</span>
+            <span style="position: absolute; bottom: 2px; left: 256px">\(t\)</span>
+          </div>
+
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="80" x2="126" y2="80" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="126" y1="80" x2="126" y2="52" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)" stroke-dasharray="5 3" />
+                <line x1="2" y1="21" x2="250" y2="83" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(v_z\)</span>
+            <span style="position: absolute; top: 64px; left: 60px" class="magenta-r3">\(t_p\)</span>
+            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
+          </div>
+
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="80" x2="250" y2="80" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(a_z\)</span>
+            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
+          </div>
+
+
         </section>
       </div>
     </main>
