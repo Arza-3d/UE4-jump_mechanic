@@ -233,26 +233,11 @@
               <code>GetJumpPeak_estimated</code> has same function with <code>GetJumpPeak</code>, <br>
               but this will <u>calculated once</u>, by finding out the time <code>Character</code> reach the highest point of the jump with: $$t_{peak} = v_{z_{(t_0)}}/g$$
             </li>
-            <!--
-            <li>
-              <code><span style="color:green">float</span> CalculateJumpZVelocity(<span style="color:green">float</span> Height);</code> is function that calculate <code>JumpZVelocity</code> based on the <b>desired max jump height</b>.
-              <br>
-              <details>
-                <summary>the math of the function:</summary>
-                <img src="https://image.ibb.co/fA2Od0/Gravity-Formula-Copy.jpg" alt="Gravity-Formula-UE4">
-              </details>
-              <details>
-                <summary>example:</summary>
-
-                  Make character that jump <b style="color:green">200</b> cm. So the <code>JumpZVelocity</code> is:
-                <code>Character.JumpZVelocity = _JumpMechanic.CalculateJumpZVelocity(<b style="color:green">200</b>);</code>
-              </details>
-              <br>
-            -->
             </li>
           </ul>
         </section>
       </div>
+
       <div data-title-r3="additional BPcomponent">
         <h2>tracker BP</h2>
         <p>These are additional blueprint components that is used to help showing data related to character jump.</p>
@@ -286,50 +271,116 @@
 
       <div data-title-r3="equation">
         <h2>equation cheatsheet</h2>
+
         <h3>math symbol definition</h3>
         <section>
           <p>Instead of using long variable names, I'd rather use short math symbol to show the equation related to character jump.</p>
           <p>So in the table below </p>
           <table>
+            <caption>math symbol of editable variable inside character</caption>
             <thead>
               <tr>
                 <th>symbol</th>
                 <th>blueprint | C++</th>
                 <th>default value</th>
                 <th>unit</th>
+                <th>vector<br>dimension</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>\(v_{z0}\)</td>
-                <td>
-                  <img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz">
-                  <code><span class="grey-r3">UCharacterMovementComponent</span>.JumpZVelocity;</code>
-                </td>
-                <td><code>600.0f</code></td>
-                <td>\(cm/s\)</td>
-              </tr>
-              <tr>
-                <td>\(g\)</td>
+                <td title="character gravity">\(g\)</td>
                 <td>
                   <img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity">
                   <code>
-                    <span class="grey-r3">UKismetMathLibrary</span>.Abs(<br>
-                    &nbsp;&nbsp;<span class="grey-r3">UCharacterMovementComponent</span>.GetGravityZ()<br>
-                    ) *<br><span class="grey-r3">UCharacterMovementComponent</span>.GravityScale;
+                    Abs(<span class="grey-r3">GetCharacterMovement()-&gt;</span>GetGravityZ()) *<br><span class="grey-r3">GetCharacterMovement()-&gt;</span>GravityScale;
                   </code>
                 </td>
-                <td></td>
+                <td><code>980.0f</code></td>
                 <td>\(cm/s^2\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="gravity scale">\(g_s\)</td>
+                <td>
+                  <img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity">
+                  <code>
+                    <span class="grey-r3">GetCharacterMovement()-&gt;</span>GravityScale;
+                  </code>
+                </td>
+                <td><code>1.0f</code></td>
+                <td></td>
+                <td></td>
               </tr>
               <tr>
                 <td>\(v_{xy_{max}}\)</td>
                 <td>
                   <img src="https://image.ibb.co/cmXhrV/height.jpg" alt="horizontal max velocity">
-                  <code><span class="grey-r3">UCharacterMovementComponent</span>.MaxWalkSpeed;</code>
+                  <code><span class="grey-r3">GetCharacterMovement()-&gt;</span>MaxWalkSpeed;</code>
                 </td>
                 <td><code>600.0f</code></td>
                 <td>\(cm/s\)</td>
+                <td>$$x, y$$</td>
+              </tr>
+              <tr>
+                <td>\(v_{z0}\)</td>
+                <td>
+                  <img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz">
+                  <code><span class="grey-r3">GetCharacterMovement()-&gt;</span>JumpZVelocity;</code>
+                </td>
+                <td><code>600.0f</code></td>
+                <td>\(cm/s\)</td>
+                <td>$$z$$</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <table>
+            <caption>math symbol of non-editable variable inside character</caption>
+            <thead>
+              <tr>
+                <th>symbol</th>
+                <th>blueprint | C++</th>
+                <th>default value</th>
+                <th>unit</th>
+                <th>vector<br>dimension</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td title="current z-acceleration">\(a_z\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm/s^2\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="level gravity">\(G\)</td>
+                <td></td>
+                <td><code>-980.0f</code></td>
+                <td>\(cm/s^2\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="max jump height">\(h\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="max jump horizontal distance">\(l\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm\)</td>
+                <td>$$x,y$$</td>
+              </tr>
+              <tr>
+                <td title="current time">\(t\)</td>
+                <td></td>
+                <td></td>
+                <td>\(s\)</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -404,39 +455,49 @@
           </p>
           <ol>
             <li>
-              <b>set equation</b> : the output of the equation is editable variable inside character class in UE4, so can be used to set the jump property.
+              <b>set equation</b> : the output of the equation is <mark>editable</mark> variable <mark>inside</mark> character class in <mark>UE4</mark>, so can be used to set the jump property.
             </li>
             <li>
-              <b>get equation</b> : the output of the equation is not editable variable in character class in UE4, only use it to get data.
+              <b>get equation</b> : the output of the equation is <mark>not editable</mark> variable <mark>inside</mark> character class in <mark>UE4</mark>, only use it to get data.
             </li>
           </ol>
+          <hr>
           <h4>set equation</h4>
           <p>Below is equation that you can use to <b>set</b> the jump :</p>
           <ul>
             <li>
-              set <code>JumpZVelocity</code> based on desired <b>max jump height</b> <span class="green-r3">\((h)\)</span> :
+              set <code>JumpZVelocity</code> based on <u style="text-decoration-color: blue">desired</u> <b>max jump height</b> <span class="green-r3">\((h)\)</span> :
               $$v_{z0} = \sqrt{2gh}$$
             </li>
             <li>
-              set  <code>JumpZVelocity</code>, then set <code>MaxWalkSpeed</code> based on desired <b>max jump height</b> <span class="green-r3">\((h)\)</span>  and desired <b>jump horizontal distance</b> <span class="green-r3">\((l)\)</span> :
-              $$v_{z0} = \sqrt{2gh}$$
-              then;
-              $$v_{xy_{max}} = \frac{gl}{2v_{z0}}$$
-            </li>
-            <li>
-              set <code>GravityScale</code>, then set <code>JumpZVelocity</code> based on <b>time at jump peak</b> <span class="green-r3">\((t_p)\)</span> and max jump height <span class="green-r3">\((h)\)</span> :
-              <ul>
+              set  <code>JumpZVelocity</code>, then set <code>MaxWalkSpeed</code> based on <u style="text-decoration-color: blue">desired</u> <b>max jump height</b> <span class="green-r3">\((h)\)</span>  and <u style="text-decoration-color: blue">desired</u> <b>max jump horizontal distance</b> <span class="green-r3">\((l)\)</span> :
+              <ol>
                 <li>
-                  so \(g\) in Unreal Engine is represented by \(-\)<code>GetGravityZ()</code> \(\times\) <code>GravityScale</code> :
+                  first, set <code>JumpZVelocity</code> ;
+                  $$v_{z0} = \sqrt{2gh}$$
+                </li>
+                <li>
+                  then, set <code>MaxWalkSpeed</code> ;
+                  $$v_{xy_{max}} = \frac{gl}{2v_{z0}}$$
+                </li>
+              </ol>
+            </li>
+            <li>
+              set <code>GravityScale</code>, then set <code>JumpZVelocity</code> based on <u style="text-decoration-color: blue">desired</u> <b>time at jump peak</b> <span class="green-r3">\((t_p)\)</span> and <u style="text-decoration-color: blue">desired</u>  <b>max jump height</b> <span class="green-r3">\((h)\)</span> :
+              <ol>
+                <li>
+                  first set <code>GravityScale</code> ;
+                  $$g_s =  \frac{1}{|G|}\bigg( \frac{h}{{t_p}^2} \bigg)$$
+                </li>
+                <li>
+                  then \(g\) value is known ;
                   $$g = |G| \times g_s$$
                 </li>
                 <li>
-                  then <code>GravityScale</code> can be set in this equation ;
-                  $$g_s =  \frac{1}{|G|}\bigg( \frac{h}{{t_p}^2} \bigg)$$
                   then set <code>JumpZVelocity</code> :
-                  $$v_{z0} = \sqrt{2(|G|\times g_s)h}$$
+                  $$v_{z0} = \sqrt{2gh}$$
                 </li>
-              </ul>
+              </ol>
             </li>
           </ul>
           <hr>
