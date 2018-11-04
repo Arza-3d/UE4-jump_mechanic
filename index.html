@@ -283,120 +283,93 @@
           <p>This is used to show the button input that is pressed during the demo</p>
         </section>
       </div>
-      <div data-title-r3="basic">
-        <h2>basic physics of jump</h2>
 
-        <h3>Jump cheatsheet</h3>
-        <section>
-          <p>Here are some possible problem to solve related to jump:</p>
-          <ol>
-            <li>
-              If a cat has to pass box with <b class="green-r3">\(h\)</b> height,
-              <br>
-              how much initial jump z velocity <span class="red-r3">\(v_{z0}\)</span> that the cat needs:
-              <img src="https://image.ibb.co/gzYsaq/problem1.jpg" alt="problem1">
-              Using this equation:
-              $$v_{z0} = \sqrt{2gh}$$
-
-              <table class="math-def-r3">
-                <thead>
-                  <tr>
-                    <th>symbol</th>
-                    <th>definition</th>
-                    <th>blueprint</th>
-                    <th title="editable inside character class?">editable?</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="red-r3">\(v_{z0}\)</td>
-                    <td>initial z velocity</td>
-                    <td><img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz"></td>
-                    <td>yes</td>
-                  </tr>
-                  <tr>
-                    <td>\(g\)</td>
-                    <td>gravity</td>
-                    <td><img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity"></td>
-                    <td>only <code>GravityScale</code></td>
-                  </tr>
-                  <tr>
-                    <td class="green-r3">\(h\)</td>
-                    <td>max jump height</td>
-                    <td></td>
-                    <td>no</td>
-                  </tr>
-                </tbody>
-              </table>
-              <br>
-              for the cat to pass the box with height <b class="green-r3">\(h\)</b> = <input type="number" min="0" onchange="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')"  onclick="findJumpZVelocity1('#findJumpZVelocityWithMaxHeight-r3x', 'findJumpZVelocityWithMaxHeight-r3x0')" id="findJumpZVelocityWithMaxHeight-r3x0" value="40"> \(cm\),
-              <br>then the cat at least need to jump with <br><span class="red-r3">\(v_{z0}\)</span> \(=\) <code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocityWithMaxHeight-r3x">280.00</b> \(cm/s\)
-              <script>
-                function findJumpZVelocity1(printTarget, inputTarget) {
-                  var jumpHeight =  document.getElementById(inputTarget).value;
-                  jumpHeight = Number(jumpHeight);
-                  var x2 = Math.sqrt(2*980*jumpHeight);
-                  x2 = x2.toFixed(2);
-                  $(printTarget).html(x2);
-                }
-              </script>
-            </li>
-            <hr>
-            <li>
-              If a cat in small room with ceiling distance above his head <b class="green-r3">\(h\)</b> need to pass gap with <b class="green-r3">\(l\)</b> distance,<br>
-              how much cat maximum z-initial speed <span class="red-r3">\(v_{z0}\)</span> so it won't hit the ceiling?
-              <br>and how fast the cat should run <span class="red-r3">\(v_{xy}\)</span> before the jump to pass that gap?
-              <img src="https://image.ibb.co/eYK3GV/problem2.jpg" alt="problem2">
-              <br>
-              $$v_{xy} = \frac{gl}{2v_{z0}}$$
-              <table class="math-def-r3">
-                <thead>
-                  <tr>
-                    <th>symbol</th>
-                    <th>definition</th>
-                    <th>blueprint</th>
-                    <th title="editable inside character class?">editable?</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="red-r3">\(v_{xy}\)</td>
-                    <td>initial xy velocity</td>
-                    <td><img src="https://image.ibb.co/cmXhrV/height.jpg" alt="height"></td>
-                    <td>yes</td>
-                  </tr>
-                  <tr>
-                    <td class="green-r3">\(l\)</td>
-                    <td>jump max horizontal distance</td>
-                    <td></td>
-                    <td>no</td>
-                  </tr>
-                </tbody>
-              </table>
-              <br>
-              if celing distance above cat head <b class="green-r3">\(h\)</b> = <input type="number" value="40" min="0" onchange="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
-              onclick="findJumpZVelocity1('#findJumpZVelocity2-r3x', 'findJumpZVelocity2-r3x0');findMaxWalkVelocity()"
-               id="findJumpZVelocity2-r3x0"> \(cm\)
-              <br>and the gap distance <b class="green-r3">\(l\)</b> = <input type="number" value="150" min="0" id="jumpDistance-r3x2" onchange="findMaxWalkVelocity()" onclick="findMaxWalkVelocity()">\(cm\)
-              <br>then for the cat to not hit ceiling, the cat;<br>maximum <span class="red-r3">\(v_{z0}\)</span> \(=\) <code>JumpZVelocity</code> \(\approx\) <b id="findJumpZVelocity2-r3x">280.00</b> \(cm/s\)<br> and for cat to jump that gap it need <br>minimum <span class="red-r3">\(v_{xy}\)</span> \(=\)  <code>MaxWalkSpeed</code> \(\approx\) <b id="finddMaxJumpDistance-r3x">1837.50</b> \(cm/s\) </li>
-              <script>
-                function findMaxWalkVelocity() {
-
-                    var jumpZ = $('#findJumpZVelocity2-r3x0').val(),
-                        jumpDistance = $('#jumpDistance-r3x2').val();
-                    jumpZ = Number(jumpZ);
-                    jumpDistance = Number(jumpDistance);
-                    $("#finddMaxJumpDistance-r3x").html(((980*jumpDistance)/(2*jumpZ)).toFixed(2));
-                }
-              </script>
-          </ol>
-        </section>
-      </div>
       <div data-title-r3="equation">
         <h2>equation cheatsheet</h2>
-
-        <h3>equation</h3>
+        <h3>math symbol definition</h3>
         <section>
+          <p>Instead of using long variable names, I'd rather use short math symbol to show the equation related to character jump.</p>
+          <p>So in the table below </p>
+          <table>
+            <thead>
+              <tr>
+                <th>symbol</th>
+                <th>blueprint | C++</th>
+                <th>default value</th>
+                <th>unit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(v_{z0}\)</td>
+                <td>
+                  <img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz">
+                  <code><span class="grey-r3">UCharacterMovementComponent</span>.JumpZVelocity;</code>
+                </td>
+                <td><code>600.0f</code></td>
+                <td>\(cm/s\)</td>
+              </tr>
+              <tr>
+                <td>\(g\)</td>
+                <td>
+                  <img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity">
+                  <code>
+                    <span class="grey-r3">UKismetMathLibrary</span>.Abs(<br>
+                    &nbsp;&nbsp;<span class="grey-r3">UCharacterMovementComponent</span>.GetGravityZ()<br>
+                    ) *<br><span class="grey-r3">UCharacterMovementComponent</span>.GravityScale;
+                  </code>
+                </td>
+                <td></td>
+                <td>\(cm/s^2\)</td>
+              </tr>
+              <tr>
+                <td>\(v_{xy_{max}}\)</td>
+                <td>
+                  <img src="https://image.ibb.co/cmXhrV/height.jpg" alt="horizontal max velocity">
+                  <code><span class="grey-r3">UCharacterMovementComponent</span>.MaxWalkSpeed;</code>
+                </td>
+                <td><code>600.0f</code></td>
+                <td>\(cm/s\)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <h3>base equation</h3>
+        <section>
+          <p>This equation will be base </p>
+          <p>Some equation taken from physics in highschool:</p>
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="80" x2="250" y2="80" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(a_z\)</span>
+            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
+            <span style="position: absolute; top: 74px; left: 256px; color: green">\(a_z=-g\)</span>
+          </div>
+
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="80" x2="126" y2="80" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="126" y1="80" x2="126" y2="52" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)" stroke-dasharray="5 3" />
+                <line x1="2" y1="31" x2="250" y2="73" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(v_z\)</span>
+            <span style="position: absolute; top: 64px; left: 60px" class="magenta-r3">\(t_p\)</span>
+            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
+            <span style="position: absolute; top: 38px; left: 126px; color: red">\(v_z(t_p) = 0\)</span>
+            <span style="position: absolute; top: 18px; left: 6px; color: green">\(v_z(0) = v_{z0}\)</span>
+          </div>
+
           <div style="position: relative; padding: 5px 0 0 3px">
             <svg width="260" height="105">
               <g>
@@ -413,39 +386,68 @@
               </g>
             </svg>
             <span style="position: absolute; top: 0px; left: 0px">\(z\)</span>
-            <span style="position: absolute; top: 58px; left: 132px" class="magenta-r3">\(h\)</span>
+            <span style="position: absolute; top: 58px; left: 132px" class="magenta-r3">\(z(t_p) = h\)</span>
             <span style="position: absolute; bottom: 2px; left: 256px">\(t\)</span>
           </div>
 
-          <div style="position: relative; padding: 5px 0 0 3px">
-            <svg width="260" height="105">
-              <g>
-                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
-                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
-                <line x1="2" y1="80" x2="126" y2="80" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)"/>
-                <line x1="126" y1="80" x2="126" y2="52" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)" stroke-dasharray="5 3" />
-                <line x1="2" y1="21" x2="250" y2="83" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
-              </g>
-            </svg>
-            <span style="position: absolute; top: 0px; left: 0px">\(v_z\)</span>
-            <span style="position: absolute; top: 64px; left: 60px" class="magenta-r3">\(t_p\)</span>
-            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
-          </div>
+          <div>$$a_z = -g$$</div>
+          <div>$$v_z = v_{z0} - gt$$</div>
+          <div>$$z = v_{z0}t - \frac{gt^2}{2}$$</div>
 
-          <div style="position: relative; padding: 5px 0 0 3px">
-            <svg width="260" height="105">
-              <g>
-                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
-                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
-                <line x1="2" y1="80" x2="250" y2="80" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+          <hr>
+        </section>
 
-              </g>
-            </svg>
-            <span style="position: absolute; top: 0px; left: 0px">\(a_z\)</span>
-            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
-          </div>
-
-
+        <h3>derived equation</h3>
+        <section>
+          <p>Using the base equation above we can derived some equation that can be used to program the character jump.</p>
+          <p>Below is equation that you can use to <b>set</b> the jump :</p>
+          <ul>
+            <li>
+              set <code>JumpZVelocity</code> based on desired <b>max jump height</b> <span class="green-r3">\((h)\)</span> :
+              $$v_{z0} = \sqrt{2gh}$$
+            </li>
+            <li>
+              set  <code>JumpZVelocity</code>, then set <code>MaxWalkSpeed</code> based on desired <b>max jump height</b> <span class="green-r3">\((h)\)</span>  and desired <b>jump horizontal distance</b> <span class="green-r3">\((l)\)</span> :
+              $$v_{z0} = \sqrt{2gh}$$
+              then;
+              $$v_{xy_{max}} = \frac{gl}{2v_{z0}}$$
+            </li>
+            <li>
+              set <code>GravityScale</code>, then set <code>JumpZVelocity</code> based on <b>time at jump peak</b> <span class="green-r3">\((t_p)\)</span> and max jump height <span class="green-r3">\((h)\)</span> :
+              <ul>
+                <li>
+                  so \(g\) in Unreal Engine is represented by \(-\)<code>GetGravityZ()</code> \(\times\) <code>GravityScale</code> :
+                  $$g = |G| \times g_s$$
+                </li>
+                <li>
+                  then <code>GravityScale</code> can be set in this equation ;
+                  $$g_s =  \frac{1}{|G|}\bigg( \frac{h}{{t_p}^2} \bigg)$$
+                  then set <code>JumpZVelocity</code> :
+                  $$v_{z0} = \sqrt{2(|G|\times g_s)h}$$
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <hr>
+          <p>Below is equation to <b>get</b> some data related to jump :</p>
+          <ul>
+            <li>
+              get <b>max jump height</b> :
+              $$h=\frac{{v_{z0}}^2}{2g}$$
+            </li>
+            <li>
+              get <b>time at jump peak</b> <span class="green-r3">\((t_p)\)</span> (<span class="grey-r3">assuming the jump is not interrupted</span>) :
+              $$t_p = \frac{v_{z0}}{g}$$
+            </li>
+            <li>
+              get <b>total jump time</b> (<span class="grey-r3">assuming the jump is not interrupted and character jump on flat surface</span>) :
+              $$t_t = 2t_p$$
+            </li>
+            <li>
+              get <b>jump horizontal distance</b> (<span class="grey-r3">assuming character jump on flat surface</span>) :
+              $$l = v_{xy}\bigg(2\frac{v_{z0}}{g}\bigg)$$
+            </li>
+          </ul>
         </section>
       </div>
     </main>
