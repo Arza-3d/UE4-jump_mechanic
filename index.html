@@ -321,7 +321,7 @@
               <tr>
                 <td title="gravity scale">\(g_s\)</td>
                 <td>
-                  <img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity">
+                  <img src="https://image.ibb.co/gnZtsf/gravity-scale.jpg" alt="gravity-scale">
                   <code>
                     <span class="grey-r3">GetCharacterMovement()-&gt;</span>GravityScale;
                   </code>
@@ -346,7 +346,7 @@
                   <img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz">
                   <code><span class="grey-r3">GetCharacterMovement()-&gt;</span>JumpZVelocity;</code>
                 </td>
-                <td><code>600.0f</code></td>
+                <td><code>420.0f</code></td>
                 <td>\(cm/s\)</td>
                 <td>$$z$$</td>
               </tr>
@@ -374,7 +374,12 @@
               </tr>
               <tr>
                 <td title="level gravity">\(G\)</td>
-                <td></td>
+                <td>
+                  <img src="https://image.ibb.co/gBU4yL/Get-Gravity-Z.jpg" alt="Get-Gravity-Z">
+                  <code>
+                    <span class="grey-r3">GetCharacterMovement()-&gt;</span>GetGravityZ();
+                  </code>
+                </td>
                 <td><code>-980.0f</code></td>
                 <td>\(cm/s^2\)</td>
                 <td>$$z$$</td>
@@ -387,7 +392,14 @@
                 <td>$$z$$</td>
               </tr>
               <tr>
-                <td title="max jump horizontal distance">\(l\)</td>
+                <td title="jump horizontal distance">\(l\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm\)</td>
+                <td>$$x,y$$</td>
+              </tr>
+              <tr>
+                <td title="max jump horizontal distance">\(l_{max}\)</td>
                 <td></td>
                 <td></td>
                 <td>\(cm\)</td>
@@ -426,7 +438,7 @@
               $$v_{z0} = \sqrt{2gh}$$
             </li>
             <li>
-              set  <code>JumpZVelocity</code>, then set <code>MaxWalkSpeed</code> based on <u style="text-decoration-color: blue">desired</u> <b>max jump height</b> <span class="green-r3">\((h)\)</span>  and <u style="text-decoration-color: blue">desired</u> <b>max jump horizontal distance</b> <span class="green-r3">\((l)\)</span> :
+              set  <code>JumpZVelocity</code>, then set <code>MaxWalkSpeed</code> based on <u style="text-decoration-color: blue">desired</u> <b>max jump height</b> <span class="green-r3">\((h)\)</span>  and <u style="text-decoration-color: blue">desired</u> <b>max jump horizontal distance</b> <span class="green-r3">\((l_{max})\)</span> :
               <ol>
                 <li>
                   first, set <code>JumpZVelocity</code> ;
@@ -434,7 +446,7 @@
                 </li>
                 <li>
                   then, set <code>MaxWalkSpeed</code> ;
-                  $$v_{xy_{max}} = \frac{gl}{2v_{z0}}$$
+                  $$v_{xy_{max}} = \frac{gl_{max}}{2v_{z0}}$$
                 </li>
               </ol>
             </li>
@@ -475,6 +487,14 @@
             <li>
               get <b>jump horizontal distance</b> (<span class="grey-r3">assuming character jump on flat surface</span>) :
               $$l = v_{xy}\bigg(2\frac{v_{z0}}{g}\bigg)$$
+            </li>
+            <li>
+              get min <b>running time</b> needed so character can get <b>max jump horizontal distance</b> :
+              $$t_r = \frac{v_{xy_{max}}}{a_{xy}}$$
+            </li>
+            <li>
+              get min <b>horizontal distance</b> for character to run to reach <b>max jump horizontal distance</b> :
+              $$l_r = \frac{{v_{xy_{max}}}^2}{2a_{xy}}$$
             </li>
           </ul>
         </section>
