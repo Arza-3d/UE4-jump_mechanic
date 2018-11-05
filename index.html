@@ -111,6 +111,8 @@
               FengMaoCharBP_SprintJump
             </code>
           </a>
+          <br>
+          outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-feng-mao">Paragon: Feng Mao</a>
           <hr>
           <p>
             <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
@@ -122,7 +124,7 @@
           <hr>
           <p>Implementation example of <code>SprintJump</code> inside character blueprint:</p>
           <img src="https://image.ibb.co/bxYgdA/sprint-Jump-Graph.jpg" alt="sprint-Jump-Graph">
-          <p>Note;</p>
+          <p><b>note:</b></p>
           <ul>
             <li>make sure <code><span class="grey-r3">SprintJump.</span>MaxJumpZVelocity</code> &gt; <code>JumpZVelocity</code>,</li>
             <li>make sure <code><span class="grey-r3">SprintJump.</span>MaxSprintSpeed</code> &gt; <code>MaxWalkSpeed</code>.</li>
@@ -152,22 +154,39 @@
         <section>
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
             <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic class
+              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
             </code>
           </a>
           &#9658;
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/SprintJump.uasset">
             <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SecondaryJump class
+              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SecondaryJump
             </code>
           </a>
           <hr>
           <video src="D:\vid\Captures\SecondaryJump.mp4" controls width="80%"></video>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SecondaryJump/KallariAnimBP_SecondaryJump.uasset">
+            <code>
+              KallariAnimBP_SecondaryJump
+            </code>
+          </a>
+          +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SecondaryJump/KallariCharBP_SecondaryJump.uasset">
+            <code>
+              KallariCharBP_SecondaryJump
+            </code>
+          </a>
+          <br>
+          outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-kallari">Paragon: Kallari</a>
           <hr>
           <p>
             <b>Secondary jump</b>: when character has 2 set of jump modes. There are the default jump and the secondary jump (which usually is higher than the default jump)
           </p>
           <p>Rikimaru and Ayame from <a href="https://en.wikipedia.org/wiki/Tenchu_2:_Birth_of_the_Stealth_Assassins">Tenchu 2</a> use secondary jump mechanism.</p>
+          <small><b>note</b>: I just realized prolly it's more fitting if this called <code>HeavyJump</code> instead lol, but whatever.</small>
+          <hr>
+          <p>Implementation example of <code>SecondaryJump</code> inside character blueprint:</p>
+          <img src="https://image.ibb.co/f3i050/secondary-Jump-Graph.jpg" alt="secondary-Jump-Graph">
         </section>
 
         <h2>fall ability:</h2>
