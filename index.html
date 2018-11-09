@@ -220,6 +220,27 @@
 
         <h3>MultipleJump</h3>
         <section>
+          <b>note</b> : I didn't make this jump mechanic as separate blueprint component, because it's easy to set up inside character, and actually <code>CurrentJumpCount</code> inside character is protected variable.
+          <hr>
+          <iframe src="https://www.youtube.com/embed/ll8QgypVnas" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br>example use in video :
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/MultipleJumps/HowitzerAnimBP_MultipleJumps.uasset">
+            <code>
+              HowitzerAnimBP_MultipleJumps
+            </code>
+          </a>
+          +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/MultipleJumps/HowitzerCharBP_MultipleJumps.uasset">
+            <code>
+              HowitzerCharBP_MultipleJumps
+            </code>
+          </a>
+          <br>
+          outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-howitzer">Paragon: Howitzer</a>
+          <hr>
+          <p>
+            <b>Multiple Jumps</b> : character ability jump in the air, this include double jump, which basically just multiple jump with 2 jumps limit, in the example above it was just <code>JumpMaxCount = 3</code>.
+          </p>
 
         </section>
 
