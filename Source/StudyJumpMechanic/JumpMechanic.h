@@ -4,24 +4,21 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "GameFramework/Character.h"
-#include "SecondaryJump.generated.h"
+#include "JumpMechanic.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class STUDYJUMPMECHANIC_API USecondaryJump : public UActorComponent
+class STUDYJUMPMECHANIC_API UJumpMechanic : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	USecondaryJump();
+	UJumpMechanic();
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
-	//ACharacter* character =
 
 public:	
 	// Called every frame
