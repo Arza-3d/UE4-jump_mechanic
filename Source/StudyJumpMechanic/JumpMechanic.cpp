@@ -1,34 +1,47 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// The base actor component for jump mechanic,
+// will deal with basic jump mechanic function
 
 #include "JumpMechanic.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Engine.h"
 
 
-// Sets default values for this component's properties
 UJumpMechanic::UJumpMechanic()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
+	PrimaryComponentTick.bCanEverTick = false;
+
 }
 
 
-// Called when the game starts
 void UJumpMechanic::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	ACharacter* MyCharacter = Cast<ACharacter>(GetOwner());
+	//UCharacterMovementComponent* MyMovement = MyCharacter->GetCharacterMovement();
+
 }
 
 
-// Called every frame
 void UJumpMechanic::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+}
+
+void UJumpMechanic::SetJumpZVelocity(float JumpZ)
+{
+	if (MyCharacter) {
+		MyCharacter->GetCharacterMovement()->JumpZVelocity = JumpZ;
+	}
+	
+
+	//FString JumpZText = (FString) MyMovement->JumpZVelocity;
+
+	//if (MyMovement->JumpZVelocity)
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("OK"));
+	
 }
 

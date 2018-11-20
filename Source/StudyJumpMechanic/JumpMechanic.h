@@ -12,18 +12,24 @@ class STUDYJUMPMECHANIC_API UJumpMechanic : public UActorComponent
 {
 	GENERATED_BODY()
 
+	class ACharacter* MyCharacter;
+	//class UCharacterMovementComponent* MyMovement;
+
+
 public:	
-	// Sets default values for this component's properties
 	UJumpMechanic();
 
+	UFUNCTION(BlueprintCallable, Category = "Power")
+	void SetJumpZVelocity(float JumpZ);
+
 protected:
-	// Called when the game starts
 	virtual void BeginPlay() override;
 
+
 public:	
-	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+	FORCEINLINE class ACharacter* GetMyCharacter() const { return MyCharacter; }
 	
+	//FORCEINLINE class UCharacterMovementComponent* GetMyMovement() const { return MyMovement; }
 };
