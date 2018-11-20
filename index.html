@@ -10,6 +10,20 @@
     </script>
     <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
+    <style>
+      section > h4 {
+        background-color: #363636;
+        width: fit-content;
+        margin-left: -15px;
+        color: rgb(230, 230, 230);
+        font-weight: normal;
+        padding: 3px 3px 3px 15px;
+      }
+
+      main h3 {
+        font-weight: normal;
+      }
+    </style>
   </head>
   <body
     data-repo-r3="https://github.com/Arza-3d/UE4-jump-mechanic"
@@ -110,6 +124,7 @@
 
         <h3 id="sprintJump">SprintJump</h3>
         <section>
+          <b>full Blueprint:</b>
           <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
             <code>
               <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
@@ -121,7 +136,26 @@
               <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump
             </code>
           </a>
+          <br><br>
+          <b>full C++:</b>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJumpCharacter.cpp">
+            <code>SprintJumpCharacter.h</code>
+          </a>
+          +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJumpCharacter.h">
+            <code>SprintJumpCharacter.cpp</code>
+          </a>
+
           <hr>
+          <p>
+            <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
+          </p>
+          <p>
+            I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> and <a href="https://en.wikipedia.org/wiki/Pepsiman_(video_game)">Pepsiman</a> use this jump mechanic.
+          </p>
+
+          <hr>
+          <h4>full blueprint</h4>
           <iframe src="https://www.youtube.com/embed/ZGwtiyz7sz4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </iframe>
 
@@ -140,13 +174,6 @@
           </a>
           <br>
           outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-feng-mao">Paragon: Feng Mao</a>
-          <hr>
-          <p>
-            <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
-          </p>
-          <p>
-            I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> and <a href="https://en.wikipedia.org/wiki/Pepsiman_(video_game)">Pepsiman</a> use this jump mechanic.
-          </p>
 
           <hr>
           <p>Implementation example of <code>SprintJump</code> inside character blueprint:</p>
