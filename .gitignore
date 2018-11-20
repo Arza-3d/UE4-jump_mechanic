@@ -9,7 +9,8 @@ Content/*
 !Content/BlueprintComponents/
 !Content/BlueprintLibrary/
 !Content/CharacterExamples/
-
+!Content/ThirdPersonCPP/
+Content/ThirdPersonCPP/Maps/
 
 
 StudyJumpMechanic.opensdf
