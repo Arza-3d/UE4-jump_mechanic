@@ -5,7 +5,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "Engine/Engine.h"
 
 ASprintJumpCharacter::ASprintJumpCharacter()
 {

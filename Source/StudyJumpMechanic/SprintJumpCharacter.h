@@ -20,10 +20,16 @@ class STUDYJUMPMECHANIC_API ASprintJumpCharacter : public AStudyJumpMechanicChar
 
 	float DefaultJumpZVelocity;
 
+	void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
+
 public:
 	ASprintJumpCharacter();
 
 	void Jump() override;
+
+	void OnJumped_Implementation() override;
+
+	void Landed(const FHitResult & Hit) override;
 
 protected:
 
@@ -41,16 +47,10 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = Jump)
 	bool bIsInSprintJump;
 
-	void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
-
 	void Sprint();
 
 	void StopSprinting();
 
 	float GetXYSpeed();
-
-	void OnJumped_Implementation() override;
-
-	void Landed(const FHitResult & Hit) override;
 
 };
