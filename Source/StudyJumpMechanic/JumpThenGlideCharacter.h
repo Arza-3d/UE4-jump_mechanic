@@ -24,7 +24,7 @@ public:
 
 	AJumpThenGlideCharacter();
 
-	UPROPERTY(BlueprintReadOnly, Category = Jump)
+	UPROPERTY(BlueprintReadOnly, Category = "Jump")
 	bool bIsGliding;
 
 	void Jump() override;
@@ -37,6 +37,6 @@ public:
 	
 protected:
 
-	UPROPERTY(BlueprintReadWrite, Category = Jump)
+	UPROPERTY(BlueprintReadWrite, Category = "Jump")
 	float GlideGravityScale;
 };

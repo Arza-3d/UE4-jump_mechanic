@@ -33,18 +33,18 @@ public:
 
 protected:
 
-	UPROPERTY(EditAnywhere, Category = Jump)
+	UPROPERTY(EditAnywhere, Category = "Jump")
 	float MaxSprintSpeed;
 
-	UPROPERTY(EditAnywhere, Category = Jump)
+	UPROPERTY(EditAnywhere, Category = "Jump")
 	float SprintJumpZVelocity;
 
 	// is meant to be used for animBP:
-	UPROPERTY(BlueprintReadOnly, Category = Jump)
+	UPROPERTY(BlueprintReadOnly, Category = "Jump")
 	bool bIsSprinting;
 
 	// is meant to be used for animBP:
-	UPROPERTY(BlueprintReadOnly, Category = Jump)
+	UPROPERTY(BlueprintReadOnly, Category = "Jump")
 	bool bIsInSprintJump;
 
 	void Sprint();
