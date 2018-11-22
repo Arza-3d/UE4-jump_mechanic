@@ -10,6 +10,21 @@
     </script>
     <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
+    <style>
+      table.blank-r3, table.blank-r3 tbody, table.blank-r3 tr, table.blank-r3 td, table.blank-r3 th {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none !important;
+      }
+      table.blank-r3 td:first-child {
+        font-weight: bold;
+        padding-left: 0;
+      }
+      table.blank-r3 td:first-child::after {
+        content: ":";
+        float: right;
+      }
+    </style>
   </head>
   <body
     data-repo-r3="https://github.com/Arza-3d/UE4-jump-mechanic"
@@ -110,57 +125,72 @@
 
         <h3 id="sprintJump">SprintJump</h3>
         <section>
-          <b>full Blueprint:</b>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
-            </code>
-          </a>
-          &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump.uasset">
-            <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump
-            </code>
-          </a>
-          <br><br>
-          <b>full C++:</b>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJumpCharacter.h">
-            <code>SprintJumpCharacter.h</code>
-          </a>
-          +
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJumpCharacter.cpp">
-            <code>SprintJumpCharacter.cpp</code>
-          </a>
+          <table class="blank-r3">
+            <tbody>
+              <tr>
+                <td>full Blueprint &emsp;</td>
+                <td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                    <code>
+                      <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                    </code>
+                  </a>
+                  &#9658;
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump.uasset">
+                    <code>
+                      <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump
+                    </code>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>full C++</td>
+                <td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJumpCharacter.h">
+                    <code>SprintJumpCharacter.h</code>
+                  </a>
+                  +
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJumpCharacter.cpp">
+                    <code>SprintJumpCharacter.cpp</code>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
           <hr>
-          <p>
-            <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
-          </p>
-          <p>
-            I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> and <a href="https://en.wikipedia.org/wiki/Pepsiman_(video_game)">Pepsiman</a> use this jump mechanic.
-          </p>
+          <div>
+            <p>
+              <b>Sprint jump</b> : character ability to jump higher when they jump after sprinting. Sprint jump height will be based on character horizontal speed before jump.
+            </p>
+            <p>
+              I think <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros.">Mario Bros</a> and <a href="https://en.wikipedia.org/wiki/Pepsiman_(video_game)">Pepsiman</a> use this jump mechanic.
+            </p>
+          </div>
 
           <hr>
-          <h4>full blueprint</h4>
-          <iframe src="https://www.youtube.com/embed/ZGwtiyz7sz4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </iframe>
 
-          <br>
-          example use in video:
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SprintJump/FengMaoAnimBP_SprintJump.uasset">
-            <code>
-              FengMaoAnimBP_SprintJump
-            </code>
-          </a>
-          +
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SprintJump/FengMaoCharBP_SprintJump.uasset">
-            <code>
-              FengMaoCharBP_SprintJump
-            </code>
-          </a>
-          <br>
-          outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-feng-mao">Paragon: Feng Mao</a>
+          <h4>full Blueprint</h4>
+          <div>
+            <iframe src="https://www.youtube.com/embed/ZGwtiyz7sz4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
 
+            <br>
+            example use in video:
+            <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SprintJump/FengMaoAnimBP_SprintJump.uasset">
+              <code>
+                FengMaoAnimBP_SprintJump
+              </code>
+            </a>
+            +
+            <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/SprintJump/FengMaoCharBP_SprintJump.uasset">
+              <code>
+                FengMaoCharBP_SprintJump
+              </code>
+            </a>
+            <br>
+            outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-feng-mao">Paragon: Feng Mao</a>
+          </div>
           <hr>
           <p>Implementation example of <code>SprintJump</code> inside character blueprint:</p>
           <img src="https://image.ibb.co/bxYgdA/sprint-Jump-Graph.jpg" alt="sprint-Jump-Graph">
@@ -169,33 +199,44 @@
             <li>make sure <code><span class="grey-r3">SprintJump.</span>MaxJumpZVelocity</code> &gt; <code>JumpZVelocity</code>,</li>
             <li>make sure <code><span class="grey-r3">SprintJump.</span>MaxSprintSpeed</code> &gt; <code>MaxWalkSpeed</code>.</li>
           </ul>
+
+          <h4>full C++</h4>
         </section>
 
         <h3>SprintJump_auto</h3>
         <section>
-          <b>full blueprint:</b>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
-            </code>
-          </a>
-          &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump_auto.uasset">
-            <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump_auto
-            </code>
-          </a>
-          <br>
-          <br>
-          <b>full C++:</b>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.h">
-            <code>SprintJump_autoCharacter.h</code>
-          </a>
-          +
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.cpp">
-            <code>SprintJump_autoCharacter.cpp</code>
-          </a>
-
+          <table class="blank-r3">
+          	<tbody>
+          		<tr>
+          			<td>full Blueprint &emsp;</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                    <code>
+                      <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                    </code>
+                  </a>
+                  &#9658;
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SprintJump_auto.uasset">
+                    <code>
+                      <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SprintJump_auto
+                    </code>
+                  </a>
+          			</td>
+          		</tr>
+          		<tr>
+          			<td>full C++</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.h">
+                    <code>SprintJump_autoCharacter.h</code>
+                  </a>
+                  +
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.cpp">
+                    <code>SprintJump_autoCharacter.cpp</code>
+                  </a>
+          			</td>
+          		</tr>
+          	</tbody>
+          </table>
           <hr>
           <p>
             Character has no sprint input, so the normal jump will always depended on how fast it walked before the jump. I think <a href="https://www.youtube.com/watch?v=QpnY1G3vt_0">Unravel</a> used this system.
@@ -205,17 +246,43 @@
 
         <h3 id="secondaryJump">Secondary Jump</h3>
         <section>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
-            </code>
-          </a>
-          &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SecondaryJump.uasset">
-            <code>
-              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SecondaryJump
-            </code>
-          </a>
+          <table class="blank-r3">
+            <tbody>
+              <tr>
+                <td>full Blueprint &emsp;</td>
+                <td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                    <code>
+                      <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                    </code>
+                  </a>
+                  &#9658;
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/SecondaryJump.uasset">
+                    <code>
+                      <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">SecondaryJump
+                    </code>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>full C++</td>
+                <td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SecondaryJumpCharacter.h">
+                    <code>
+                      SecondaryJumpCharacter.h
+                    </code>
+                  </a>
+                  +
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/SecondaryJumpCharacter.cpp">
+                    <code>
+                      SecondaryJumpCharacter.cpp
+                    </code>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
           <hr>
           <iframe src="https://www.youtube.com/embed/YAn7L49fsk4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br>example use in video :
@@ -272,13 +339,38 @@
 
         <h3 id="jumpThenGlide">JumpThenGlide</h3>
         <section>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
-          </a>
-          &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenGlide.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide</code>
-          </a>
+          <table class="blank-r3">
+          	<tbody>
+          		<tr>
+          			<td>full Blueprint &emsp;</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                    <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
+                  </a>
+                  &#9658;
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenGlide.uasset">
+                    <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenGlide</code>
+                  </a>
+          			</td>
+          		</tr>
+          		<tr>
+          			<td>full C++</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.h">
+                    <code>
+                      JumpThenGlideCharacter.h
+                    </code>
+                  </a>
+                  +
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.cpp">
+                    <code>
+                      JumpThenGlideCharacter.cpp
+                    </code>
+                  </a>
+          			</td>
+          		</tr>
+          	</tbody>
+          </table>
           <hr>
           <iframe src="https://www.youtube.com/embed/jQ0DXUmH47o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br>example use in video :
@@ -311,13 +403,39 @@
 
         <h3>JumpThenFastDrop</h3>
         <section>
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
-          </a>
-          &#9658;
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenFastDrop.uasset">
-            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenFastDrop</code>
-          </a>
+          <table class="blank-r3">
+          	<tbody>
+          		<tr>
+          			<td>full Blueprint &emsp;</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                    <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
+                  </a>
+                  &#9658;
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenFastDrop.uasset">
+                    <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenFastFall</code>
+                  </a>
+          			</td>
+          		</tr>
+          		<tr>
+          			<td>full C++</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.h">
+                    <code>
+                      ?JumpThenGlideCharacter.h
+                    </code>
+                  </a>
+                  +
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.cpp">
+                    <code>
+                      ?JumpThenGlideCharacter.cpp
+                    </code>
+                  </a>
+          			</td>
+          		</tr>
+          	</tbody>
+          </table>
+
           <hr>
 
           <hr>
