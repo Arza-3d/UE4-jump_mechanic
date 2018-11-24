@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Part of jump mechanic study in https://arza-3d.github.io/UE4-jump-mechanic/
 
 #include "SecondaryJumpCharacter.h"
 #include "Components/InputComponent.h"
@@ -31,7 +31,7 @@ void ASecondaryJumpCharacter::SecondaryInputReleased()
 }
 
 
-// is meant to be used for animBP, use this if character has different jump start animation
+// (option A) is meant to be used for animBP, use this IF character has different jump start animation
 void ASecondaryJumpCharacter::Jump()
 {
 	if (bSecondaryButtonIsPressed)
@@ -43,7 +43,7 @@ void ASecondaryJumpCharacter::Jump()
 }
 
 /*
-// is meant to be used for animBP, use this if character has same jump start animation but different jump animation while in the air
+// (option B) is meant to be used for animBP, use this IF character has same jump start animation but different jump animation while in the air
 void ASecondaryJumpCharacter::OnJumped_Implementation()
 {
 	if (bSecondaryButtonIsPressed)

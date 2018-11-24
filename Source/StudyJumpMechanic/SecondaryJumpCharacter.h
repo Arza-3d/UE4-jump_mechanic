@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Part of jump mechanic study in https://arza-3d.github.io/UE4-jump-mechanic/
 
 #pragma once
 
@@ -7,7 +7,7 @@
 #include "SecondaryJumpCharacter.generated.h"
 
 /**
- * 
+ * Character class with built-in secondary jump / heavy jump
  */
 UCLASS()
 class STUDYJUMPMECHANIC_API ASecondaryJumpCharacter : public AStudyJumpMechanicCharacter
@@ -23,20 +23,20 @@ class STUDYJUMPMECHANIC_API ASecondaryJumpCharacter : public AStudyJumpMechanicC
 public:
 	ASecondaryJumpCharacter();
 
-	// is meant to be used for animBP, use this if character has different jump start animation
+	// (option A) is meant to be used for animBP, use this IF character has different jump start animation
 	void Jump() override;
 
-	// is meant to be used for animBP, use this if character has same jump start animtaion but has different jump animation while in the air
+	// (option B) is meant to be used for animBP, use this IF character has same jump start animtaion but has different jump animation while in the air
 	//void OnJumped_Implementation() override;
 
 	void Landed(const FHitResult & Hit) override;
 	
 protected:
 
-	UPROPERTY(BlueprintReadWrite, Category = "Jump")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Secondary / Heavy Jump")
 	float SecondaryJumpZVelocity;
 
-	// is meant to be used for animBP
+	// is meant to be used for animBP (optional)
 	UPROPERTY(BlueprintReadOnly, Category = "Jump")
 	float bIsInSecondaryJump;
 

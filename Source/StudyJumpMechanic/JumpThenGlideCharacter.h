@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Part of jump mechanic study in https://arza-3d.github.io/UE4-jump-mechanic/
 
 #pragma once
 
@@ -7,7 +7,7 @@
 #include "JumpThenGlideCharacter.generated.h"
 
 /**
- * 
+ *  Character class with built-in jump then glide
  */
 UCLASS()
 class STUDYJUMPMECHANIC_API AJumpThenGlideCharacter : public AStudyJumpMechanicCharacter
@@ -24,9 +24,6 @@ public:
 
 	AJumpThenGlideCharacter();
 
-	UPROPERTY(BlueprintReadOnly, Category = "Jump")
-	bool bIsGliding;
-
 	void Jump() override;
 
 	void StopJumping() override;
@@ -37,6 +34,11 @@ public:
 	
 protected:
 
-	UPROPERTY(BlueprintReadWrite, Category = "Jump")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Jump Then Glide")
 	float GlideGravityScale;
+
+	// is meant to be used for animBP (optional)
+	UPROPERTY(BlueprintReadOnly, Category = "Jump Then Glide")
+	bool bIsGliding;
+
 };

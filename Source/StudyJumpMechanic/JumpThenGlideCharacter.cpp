@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Part of jump mechanic study in https://arza-3d.github.io/UE4-jump-mechanic/
 
 #include "JumpThenGlideCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -7,6 +7,8 @@ AJumpThenGlideCharacter::AJumpThenGlideCharacter()
 {
 	DefaultGravityScale = GetCharacterMovement()->GravityScale;
 	GlideGravityScale = 0.08f;
+
+	// are meant to be used with animBP (optional)
 	bJumpInputIsPressed = false;
 	bIsAbleToGlide = false;
 }

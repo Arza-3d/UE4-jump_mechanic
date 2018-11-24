@@ -14,7 +14,7 @@ ASprintJumpCharacter::ASprintJumpCharacter()
 	SprintJumpZVelocity = 1200.0f;
 	GradientJumpToSpeed = (SprintJumpZVelocity - DefaultJumpZVelocity) / (MaxSprintSpeed - DefaultMaxWalkSpeed);
 
-	// these are meant to be used for AnimBP:
+	// these are meant to be used for AnimBP (optional):
 	bIsSprinting = false;
 	bIsInSprintJump = false;
 }

@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Part of jump mechanic study in https://arza-3d.github.io/UE4-jump-mechanic/
 
 #pragma once
 
@@ -7,7 +7,7 @@
 #include "SprintJump_autoCharacter.generated.h"
 
 /**
- * 
+ * Character class with built-in auto-sprint jump
  */
 UCLASS()
 class STUDYJUMPMECHANIC_API ASprintJump_autoCharacter : public AStudyJumpMechanicCharacter
@@ -28,6 +28,8 @@ public:
 
 protected:
 
+	// this value should be higher than CharacterMovement.JumpZVelocity
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Auto Sprint Jump")
 	float MaxJumpZVelocity;
 
 	float GetXYSpeed();

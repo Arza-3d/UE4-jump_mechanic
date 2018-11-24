@@ -33,24 +33,26 @@ public:
 
 protected:
 
-	UPROPERTY(EditAnywhere, Category = "Jump")
+	// this value should be higher than CharacterMovement.MaxWalkSpeed
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Sprint Jump")
 	float MaxSprintSpeed;
 
-	UPROPERTY(EditAnywhere, Category = "Jump")
+	// this value should be higher than CharacterMovement.JumpZVelocity
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Sprint Jump")
 	float SprintJumpZVelocity;
-
-	// is meant to be used for animBP:
-	UPROPERTY(BlueprintReadOnly, Category = "Jump")
-	bool bIsSprinting;
-
-	// is meant to be used for animBP:
-	UPROPERTY(BlueprintReadOnly, Category = "Jump")
-	bool bIsInSprintJump;
 
 	void Sprint();
 
 	void StopSprinting();
 
 	float GetXYSpeed();
+
+	// is meant to be used for animBP (optional):
+	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
+	bool bIsSprinting;
+
+	// is meant to be used for animBP (optional):
+	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
+	bool bIsInSprintJump;
 
 };
