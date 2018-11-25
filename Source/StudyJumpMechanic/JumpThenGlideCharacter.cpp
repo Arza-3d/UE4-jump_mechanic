@@ -7,10 +7,11 @@ AJumpThenGlideCharacter::AJumpThenGlideCharacter()
 {
 	DefaultGravityScale = GetCharacterMovement()->GravityScale;
 	GlideGravityScale = 0.08f;
-
-	// are meant to be used with animBP (optional)
 	bJumpInputIsPressed = false;
 	bIsAbleToGlide = false;
+
+	// is meant to be used with animBP (optional)
+	bIsGliding = false;
 }
 
 void AJumpThenGlideCharacter::Landed(const FHitResult & Hit)
@@ -18,6 +19,7 @@ void AJumpThenGlideCharacter::Landed(const FHitResult & Hit)
 	bIsAbleToGlide = false;
 	GetCharacterMovement()->bNotifyApex = false;
 	GetCharacterMovement()->GravityScale = DefaultGravityScale;
+	bIsGliding = false;
 }
 
 void AJumpThenGlideCharacter::Jump()
@@ -28,6 +30,7 @@ void AJumpThenGlideCharacter::Jump()
 	{
 		if (bIsAbleToGlide && bJumpInputIsPressed) {
 			GetCharacterMovement()->GravityScale = GlideGravityScale;
+			bIsGliding = true;
 		}
 	}
 	else
@@ -41,6 +44,7 @@ void AJumpThenGlideCharacter::StopJumping()
 {
 	bJumpInputIsPressed = false;
 	GetCharacterMovement()->GravityScale = DefaultGravityScale;
+	bIsGliding = false;
 	Super::StopJumping();
 }
 
@@ -49,5 +53,6 @@ void AJumpThenGlideCharacter::NotifyJumpApex()
 	bIsAbleToGlide = true;
 	if (bJumpInputIsPressed) {
 		GetCharacterMovement()->GravityScale = GlideGravityScale;
+		bIsGliding = true;
 	}
 }
