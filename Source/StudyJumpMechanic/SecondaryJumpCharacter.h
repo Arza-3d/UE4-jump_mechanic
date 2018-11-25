@@ -14,9 +14,9 @@ class STUDYJUMPMECHANIC_API ASecondaryJumpCharacter : public AStudyJumpMechanicC
 {
 	GENERATED_BODY()
 
-	bool bSecondaryButtonIsPressed;
-
 	void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
+
+	bool bSecondaryButtonIsPressed;
 
 	float DefaultJumpZVelocity;
 
@@ -30,14 +30,14 @@ public:
 	//void OnJumped_Implementation() override;
 
 	void Landed(const FHitResult & Hit) override;
-	
+
 protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Secondary / Heavy Jump")
 	float SecondaryJumpZVelocity;
 
 	// is meant to be used for animBP (optional)
-	UPROPERTY(BlueprintReadOnly, Category = "Jump")
+	UPROPERTY(BlueprintReadOnly, Category = "Secondary / Heavy Jump")
 	float bIsInSecondaryJump;
 
 	void SecondaryInputPressed();
