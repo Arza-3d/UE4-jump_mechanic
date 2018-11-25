@@ -30,7 +30,6 @@ void ASecondaryJumpCharacter::SecondaryInputReleased()
 	bSecondaryButtonIsPressed = false;
 }
 
-
 // (option A) is meant to be used for animBP, use this IF character has different jump start animation
 void ASecondaryJumpCharacter::Jump()
 {
