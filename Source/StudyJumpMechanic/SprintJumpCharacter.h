@@ -18,8 +18,6 @@ class STUDYJUMPMECHANIC_API ASprintJumpCharacter : public AStudyJumpMechanicChar
 
 	float DefaultMaxWalkSpeed;
 
-	float DefaultJumpZVelocity;
-
 	void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
 
 public:
@@ -46,6 +44,10 @@ protected:
 	void StopSprinting();
 
 	float GetXYSpeed();
+
+	// exposed as public for animBP
+	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
+	float DefaultJumpZVelocity;
 
 	// is meant to be used for animBP (optional):
 	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
