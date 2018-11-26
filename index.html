@@ -132,7 +132,7 @@
               List of jump mechanics that are not here yet :
               <ul>
                 <li>
-                  <b>Charged jump</b> like in Tony Hawk or any boarding game
+                  <b>Charged jump</b> like in Tony Hawk or any snowboarding game
                 </li>
                 <li>
                   <b>Jump from wall to wall</b> like in Prince of Persia
@@ -224,9 +224,6 @@
             </p>
           </div>
           <h4>pure Blueprint</h4>
-          <h1>twEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSS</h1>
-          <script src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJumpCharacter.h"></script>
-
           <div>
             <p>
               In pure blueprint this sprint jump mechanic is made inside <code>SprintJump</code> blueprint component, which is the child of <code>JumpMechanic</code> blueprint component.<br>
@@ -268,156 +265,24 @@
             <div class="tab-r3">
               <nav>
                <a><var>SprintJumpCharacter</var>.h</a>
+               <span>+</span>
                <a><var>SprintJumpCharacter</var>.cpp</a>
+               <span>+</span>
                <a>DefaultInput.ini</a>
              </nav>
-             <div class="cpp-codexes-r3"
-               data-cpp-class-r3="SprintJumpCharacter"
-               data-cpp-funct-r3="GetXYSpeed,Sprint,StopSprinting"  data-cpp-var-r3="DefaultMaxWalkSpeed,DefaultJumpZVelocity,MaxSprintSpeed,SprintJumpZVelocity,GradientJumpToSpeed"
-               data-cpp-var2-r3="bIsSprinting,bIsInSprintJump"
-               data-cpp-input-r3="SecondaryInput"
-             >
+             <div>
                <div>
                  <p>class member declaration:</p>
-                 <pre>
-                   #pragma once
-
-                   #include "CoreMinimal.h"
-                   #include "StudyJumpMechanicCharacter.h"
-                   #include "SprintJumpCharacter.generated.h"
-
-                   /**
-                    * Character class with built-in sprint jump ability
-                    */
-                   UCLASS()
-                   class STUDYJUMPMECHANIC_API ASprintJumpCharacter : public AStudyJumpMechanicCharacter
-                   {
-                   	GENERATED_BODY()
-
-                   	float GradientJumpToSpeed;
-
-                   	float DefaultMaxWalkSpeed;
-
-                   	float DefaultJumpZVelocity;
-
-                   	void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
-
-                   public:
-                   	ASprintJumpCharacter();
-
-                   	void Jump() override;
-
-                   	void OnJumped_Implementation() override;
-
-                   	void Landed(const FHitResult & Hit) override;
-
-                   protected:
-
-                   	// this value should be higher than CharacterMovement.MaxWalkSpeed
-                   	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Sprint Jump")
-                   	float MaxSprintSpeed;
-
-                   	// this value should be higher than CharacterMovement.JumpZVelocity
-                   	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Sprint Jump")
-                   	float SprintJumpZVelocity;
-
-                   	void Sprint();
-
-                   	void StopSprinting();
-
-                   	float GetXYSpeed();
-
-                   	// is meant to be used for animBP (optional):
-                   	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
-                   	bool bIsSprinting;
-
-                   	// is meant to be used for animBP (optional):
-                   	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
-                   	bool bIsInSprintJump;
-
-                   };
-                 </pre>
+                 <script src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJumpCharacter.h"></script>
                </div>
                <div>
                  <p>Sprint jump mechanic logic:</p>
-                 <pre>
-                   #include "SprintJumpCharacter.h"
-                   #include "Components/InputComponent.h"
-                   #include "GameFramework/CharacterMovementComponent.h"
-                   #include "Components/CapsuleComponent.h"
-                   #include "Kismet/KismetMathLibrary.h"
-
-                   ASprintJumpCharacter::ASprintJumpCharacter()
-                   {
-                   	DefaultMaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
-                   	DefaultJumpZVelocity = GetCharacterMovement()->JumpZVelocity;
-                   	MaxSprintSpeed = 1200.0f;
-                   	SprintJumpZVelocity = 1200.0f;
-                   	GradientJumpToSpeed = (SprintJumpZVelocity - DefaultJumpZVelocity) / (MaxSprintSpeed - DefaultMaxWalkSpeed);
-
-                   	// these are meant to be used for AnimBP (optional):
-                   	bIsSprinting = false;
-                   	bIsInSprintJump = false;
-                   }
-
-                   void ASprintJumpCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
-                   {
-                   	Super::SetupPlayerInputComponent(InputComponent);
-                   	PlayerInputComponent->BindAction("SecondaryInput", IE_Pressed, this, &ASprintJumpCharacter::Sprint);
-                   	PlayerInputComponent->BindAction("SecondaryInput", IE_Released, this, &ASprintJumpCharacter::StopSprinting);
-                   }
-
-                   float ASprintJumpCharacter::GetXYSpeed()
-                   {
-                   	FVector ActorVelocity = GetCapsuleComponent()->GetPhysicsLinearVelocity();
-                   	float xSpeedSquared = UKismetMathLibrary::Square(ActorVelocity.Component(0));
-                   	float ySpeedSquared = UKismetMathLibrary::Square(ActorVelocity.Component(1));
-                   	return UKismetMathLibrary::Sqrt(xSpeedSquared + ySpeedSquared);
-                   }
-
-                   void ASprintJumpCharacter::Sprint()
-                   {
-                   	GetCharacterMovement()->MaxWalkSpeed = MaxSprintSpeed;
-                   	bIsSprinting = true;
-                   }
-
-                   void ASprintJumpCharacter::StopSprinting()
-                   {
-                   	GetCharacterMovement()->MaxWalkSpeed = DefaultMaxWalkSpeed;
-                   	bIsSprinting = false;
-                   }
-
-                   void ASprintJumpCharacter::OnJumped_Implementation()
-                   {
-                   	bIsInSprintJump = (bIsSprinting) ? true : false;
-                   }
-
-                   void ASprintJumpCharacter::Landed(const FHitResult & Hit)
-                   {
-                   	GetCharacterMovement()->JumpZVelocity = DefaultJumpZVelocity;
-                   	bIsInSprintJump = false;
-                   }
-
-                   void ASprintJumpCharacter::Jump()
-                   {
-                   	if (GetXYSpeed() > DefaultMaxWalkSpeed && bIsSprinting)
-                   	{
-                   		float NewJumpZVelocity = ((GetXYSpeed() - DefaultMaxWalkSpeed) * GradientJumpToSpeed) + DefaultJumpZVelocity;
-                   		GetCharacterMovement()->JumpZVelocity = NewJumpZVelocity;
-                   	}
-                   	else
-                   	{
-                   		GetCharacterMovement()->JumpZVelocity = DefaultJumpZVelocity;
-                   	}
-
-                   	Super::Jump();
-                   }
-                 </pre>
+                 <script src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJumpCharacter.cpp"></script>
                </div>
                <div>
                  <p>add player input <kbd>Shift</kbd> in <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Config/DefaultInput.ini"><code>GameInput.ini</code></a> :</p>
                  <pre>
-                   +ActionMappings=(ActionName="SecondaryInput",Key=LeftShift,bShift=False,bCtrl=False,bAlt=False,bCmd=False)
+                   +ActionMappings=(ActionName=<span class="green-r3">"SecondaryInput"</span>,Key=LeftShift,bShift=False,bCtrl=False,bAlt=False,bCmd=False)
                  </pre>
                </div>
              </div>
@@ -657,120 +522,15 @@
                 <a><var>SecondaryJumpCharacter</var>.h</a>
                 <a><var>SecondaryJumpCharacter</var>.cpp</a>
                 <a>DefaultInput.ini</a>
-                <a>raw</a>
               </nav>
-              <div
-                data-cpp-class-r3="SecondaryJumpCharacter"
-                data-cpp-funct-r3="SecondaryInputPressed,SecondaryInputReleased"  data-cpp-var-r3="SecondaryJumpZVelocity,DefaultJumpZVelocity,bSecondaryButtonIsPressed"
-                data-cpp-var2-r3="bIsInSecondaryJump"
-                data-cpp-input-r3="SecondaryInput"
-              >
-                <div>
-                  <iframe src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJumpCharacter.h" width="600px" height="300px"></iframe>
-                </div>
+              <div>
                 <div>
                   <p>class member declaration</p>
-                  <pre>
-                    #pragma once
-
-                    #include "CoreMinimal.h"
-                    #include "StudyJumpMechanicCharacter.h"
-                    #include "SecondaryJumpCharacter.generated.h"
-
-                    /**
-                     * Character class with built-in secondary jump / heavy jump
-                     */
-                    UCLASS()
-                    class STUDYJUMPMECHANIC_API ASecondaryJumpCharacter : public AStudyJumpMechanicCharacter
-                    {
-                    	GENERATED_BODY()
-
-                    	void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
-
-                    	bool bSecondaryButtonIsPressed;
-
-                    	float DefaultJumpZVelocity;
-
-                    public:
-                    	ASecondaryJumpCharacter();
-
-                    	// (option A) is meant to be used for animBP, use this IF character has different jump start animation
-                    	void Jump() override;
-
-                    	// (option B) is meant to be used for animBP, use this IF character has same jump start animtaion but has different jump animation while in the air
-                    	//void OnJumped_Implementation() override;
-
-                    	void Landed(const FHitResult & Hit) override;
-
-                    protected:
-
-                    	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Secondary / Heavy Jump")
-                    	float SecondaryJumpZVelocity;
-
-                    	// is meant to be used for animBP (optional)
-                    	UPROPERTY(BlueprintReadOnly, Category = "Secondary / Heavy Jump")
-                    	float bIsInSecondaryJump;
-
-                    	void SecondaryInputPressed();
-
-                    	void SecondaryInputReleased();
-
-                    };
-                  </pre>
+                  <script src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SecondaryJumpCharacter.h"></script>
                 </div>
                 <div>
                   <p>secondary jump logic :</p>
-                  <pre class="prettyprint lang-cpp" style="white-space:pre">
-                    #include "SecondaryJumpCharacter.h"
-                    #include "Components/InputComponent.h"
-                    #include "GameFramework/CharacterMovementComponent.h"
-
-                    ASecondaryJumpCharacter::ASecondaryJumpCharacter()
-                    {
-                    	bSecondaryButtonIsPressed = false;
-                    	DefaultJumpZVelocity = GetCharacterMovement()->JumpZVelocity;
-                    	SecondaryJumpZVelocity = 1200.0f;
-                    }
-
-                    void ASecondaryJumpCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
-                    {
-                    	Super::SetupPlayerInputComponent(InputComponent);
-                    	PlayerInputComponent->BindAction("SecondaryInput", IE_Pressed, this, &ASecondaryJumpCharacter::SecondaryInputPressed);
-                    	PlayerInputComponent->BindAction("SecondaryInput", IE_Released, this, &ASecondaryJumpCharacter::SecondaryInputReleased);
-                    }
-
-                    void ASecondaryJumpCharacter::SecondaryInputPressed()
-                    {
-                    	GetCharacterMovement()->JumpZVelocity = SecondaryJumpZVelocity;
-                    	bSecondaryButtonIsPressed = true;
-                    }
-
-                    void ASecondaryJumpCharacter::SecondaryInputReleased()
-                    {
-                    	GetCharacterMovement()->JumpZVelocity = DefaultJumpZVelocity;
-                    	bSecondaryButtonIsPressed = false;
-                    }
-
-                    // is meant to be used with animBP (optional)
-                    void ASecondaryJumpCharacter::Jump()
-                    {
-                    	if (bSecondaryButtonIsPressed)
-                    	{
-                    		bIsInSecondaryJump = true;
-                    	}
-
-                    	Super::Jump();
-                    }
-
-
-                    // is meant to be used with animBP (optional)
-                    void ASecondaryJumpCharacter::Landed(const FHitResult & Hit)
-                    {
-                    	bIsInSecondaryJump = false;
-                    	OnLanded(Hit); // the last two line is the default definition of this function from Character.cpp
-                    	LandedDelegate.Broadcast(Hit); // broadcast to EventOnLanded blueprint
-                    }
-                  </pre>
+                  <script src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SecondaryJumpCharacter.cpp"></script>
                 </div>
                 <div>
                   <p>
@@ -1013,6 +773,13 @@
     </main>
     <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3.min.js"></script>
     <script type="text/javascript">
+    $('.com:contains("#include")').css(
+      {
+        'font-style' : 'normal',
+        'color' : 'black'
+      }
+    );
+    /*
       let $preText = $('pre:contains("#include")');
       for (let i = 0; i < $preText.length; i++) {
         let preText = $($preText[i]).html();
@@ -1020,7 +787,7 @@
         preText = preText.replace(/\<span class="com">#pragma<\/span>/g, '#pragma');
         $preText[i].innerHTML = preText;
       }
-
+    */
 
     </script>
   </body>
