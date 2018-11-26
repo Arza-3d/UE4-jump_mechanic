@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://image.ibb.co/nqbdHJ/titlelogo.png" rel="icon">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
     <link href="https://raw.githack.com/Arza-3d/ar3.js/master/stylesheets/ar3.min.css" rel="stylesheet" type="text/css">
     <title>🎮 jump mechanic study in UE4</title>
     <style>
@@ -24,21 +27,6 @@
       .comment-r3 .green-r3{color: rgba(0,128,0,0.5)}
       .comment-r3 .blue-r3{color: rgba(0,0,128,0.5)}
       .comment-r3 .grey-r3{color: rgba(128,128,128,0.5)}
-      .com{
-        font-style: italic;
-        color: rgba(0,0,0,0.2) !important;
-      }
-      .gist-it-gist .gist-file .gist-data, .gister-gist .gist-file .gist-data {
-        background-color: #eee !important;
-      }
-      pre {
-        font-family: "Roboto Mono",Consolas,monospace !important;
-        font-size: 10px;
-        tab-size: 4;
-      }
-      summary {
-        font-weight: normal;
-      }
     </style>
   </head>
   <body
@@ -59,45 +47,23 @@
           <td>Unreal Engine 4.19.2</td>
         </tr>
         <tr>
-          <td>project name</td>
-          <td style="font-weight:bold">StudyJumpMechanic</td>
-        </tr>
-        <tr>
           <td>project template</td>
           <td>Third Person</td>
         </tr>
         <tr>
-          <td>project repo</td>
+          <td>project repository</td>
           <td><a href="https://github.com/Arza-3d/UE4-jump-mechanic">github.com/Arza-3d/UE4-jump-mechanic</a></td>
         </tr>
       </table>
       <p>
-        This is study project on jump mechanics implementation in Character class in UE4. The study will be done by recreating any jump mechanics in 2 ways:
+        This project <mark>is focus study on jump mechanics in UE4</mark>. The study will be done by recreating as many <b>jump mechanics</b> as possible in:<br> <code style="display:initial">📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpMechanic/ChildClass">📁ChildClass</a></code>. <br>Every jump mechanic will be contained in <b>blueprint component</b> for reusability.
       </p>
-      <ol>
-        <li>
-          <b>Pure blueprint</b> : create the jump mechanic inside <u>ActorComponent</u>,
-          <br>then this component is attached inside character blueprint.
-          <br>This <u>actor components</u> will be created in this folder:<br>
-
-          <code>📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpMechanic/ChildClass">📁ChildClass</a></code>
-        </li>
-        <li>
-          <b>Pure C++</b> : create the jump mechanic directly inside a c++ character class.
-          <br>Then create character blueprint from that c++ character class.
-          <br>This <u>c++ character classes</u> will be created in this folder:
-          <br>
-          <code>📁Source/📁<a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Source/StudyJumpMechanic">StudyJumpMechanic</a></code>
-        </li>
-      </ol>
-
-      <span>
-        note: <u style="text-decoration-color:red">Epic assets that are used in this project are <b>gitignored</b></u>.
-        <br>
-        <br>
-      </span>
-
-
+      <p>
+        note: <u style="text-decoration-color:red">Epic assets that are used in this project are <b>gitignored</b></u>.<br>Project download link:
+      </p>
+      <button><a href="https://codeload.github.com/Arza-3d/UE4-jump-mechanic/zip/master">project(zip)</a></button>
+      <br>
+      <br>
     </header>
     <main class="aside-nav-target-r3">
 
@@ -105,81 +71,60 @@
         <h2>intro</h2>
         <div>
           <p>
-            Currently here is the progress of this project:
+            <mark>jump mechanic BP components  only deal with jump physics</mark>, SFX and animation, which is character specific, is done inside characterBP and animBP.
           </p>
-          <ul>
+          <p>
+            The jump mechanic BP components will be split into 2 hierarchies:
+          </p>
+          <ol>
             <li>
-              List of <b class="green-r3">finished</b> jump mechanics :
+              one as a <b>parent class</b>, called <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                <code>
+                  <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                </code>
+              </a>
+              , which will contain all <mark>based</mark> function related to jump
             </li>
-            <ul>
-              <li>
-                <b>Sprint jump</b> like in Mario Bros or Pepsiman
-              </li>
-              <li>
-                <b>Auto sprint jump</b> like in Unravel
-              </li>
-              <li>
-                <b>Secondary jump</b> like in Tenchu 2
-              </li>
-              <li>
-                <b>Multiple jump</b> like Sanji jump ability in One Piece
-              </li>
-              <li>
-                <b>Jump then glide</b> like Rayman or Spyro
-              </li>
-            </ul>
             <li>
-              List of jump mechanics that are not here yet :
+              the other are the <b>children class</b>, which has the specific <mark>implementation</mark> of jump mechanic, below are the list of that children class:
               <ul>
-                <li>
-                  <b>Charged jump</b> like in Tony Hawk or any boarding game
-                </li>
-                <li>
-                  <b>Jump from wall to wall</b> like in Prince of Persia
-                </li>
-                <li>
-                  <b>Jump then fast fall</b>
-                </li>
-                <li>
-                  <b>Jump on enemy</b> like in Batman Arkham
-                </li>
-                <li>
-                  <b>Auto jump</b> like in Assassin's Creed
-                </li>
+                <li><code>SprintJump</code></li>
+                <li><code>SecondaryJump</code></li>
+                <li><code>MultipleJump</code></li>
+                <li><code>ChargedJump</code></li>
+                <li><code>JumpThenGlide</code></li>
+                <li><code>JumpThenFastDrop</code></li>
+                <li><code>JumpThenDead</code></li>
+                <li><code>JumpThenDamaged</code></li>
               </ul>
             </li>
+          </ol>
+
+          <p>
+            All of that blueprint components above are ready to use, without the need to copy the whole project, as long as the component is inside the correct address folder:
+          </p>
+
+          <ul>
             <li>
-              <details>
-                <summary>List of solved failures :</summary>
-                <ul>
-                  <li>
-                    Override <code>Landed</code> could make <code>EventOnLanded</code> inside blueprint won't be fired
-                  </li>
-                  <li>
-                    There is <code>NotifyJumpApex</code> in blueprint and C++, <br>no need to make new function for that task
-                  </li>
-                  <li>
-                    Keep it simple
-                  </li>
-                </ul>
-              </details>
+              parent address:<br>
+              <code>
+                📁Content/📁BlueprintComponents/📁JumpMechanic/<a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                <code>
+                  <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic
+                </code>
+              </a>
+              </code>
             </li>
             <li>
-              <details>
-                <summary style="font-weight:normal">List of unsolved failures :</summary>
-                <ul>
-                  <li>
-                    Somehow Muriel C++ character example won't use gliding animation...
-                  </li>
-                </ul>
-              </details>
+              <b>The jump mechanic BP</b> (children) address:<br>
+              <code>
+                📁Content/📁BlueprintComponents/📁JumpMechanic/📁ChildClass/
+              </code>
             </li>
           </ul>
-
         </div>
 
-        </script>
-        <h2>jump mechanics : </h2>
+        <h2>jump mechanics implementation:</h2>
 
         <h3 id="sprintJump">Sprint Jump</h3>
         <section>
@@ -224,9 +169,6 @@
             </p>
           </div>
           <h4>pure Blueprint</h4>
-          <h1>twEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSS</h1>
-          <script src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJumpCharacter.h"></script>
-
           <div>
             <p>
               In pure blueprint this sprint jump mechanic is made inside <code>SprintJump</code> blueprint component, which is the child of <code>JumpMechanic</code> blueprint component.<br>
@@ -657,17 +599,13 @@
                 <a><var>SecondaryJumpCharacter</var>.h</a>
                 <a><var>SecondaryJumpCharacter</var>.cpp</a>
                 <a>DefaultInput.ini</a>
-                <a>raw</a>
               </nav>
-              <div
+              <div class="cpp-codexes-r3"
                 data-cpp-class-r3="SecondaryJumpCharacter"
                 data-cpp-funct-r3="SecondaryInputPressed,SecondaryInputReleased"  data-cpp-var-r3="SecondaryJumpZVelocity,DefaultJumpZVelocity,bSecondaryButtonIsPressed"
                 data-cpp-var2-r3="bIsInSecondaryJump"
                 data-cpp-input-r3="SecondaryInput"
               >
-                <div>
-                  <iframe src="http://gist-it.appspot.com/http://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJumpCharacter.h" width="600px" height="300px"></iframe>
-                </div>
                 <div>
                   <p>class member declaration</p>
                   <pre>
@@ -720,7 +658,7 @@
                 </div>
                 <div>
                   <p>secondary jump logic :</p>
-                  <pre class="prettyprint lang-cpp" style="white-space:pre">
+                  <pre>
                     #include "SecondaryJumpCharacter.h"
                     #include "Components/InputComponent.h"
                     #include "GameFramework/CharacterMovementComponent.h"
@@ -783,6 +721,32 @@
               </div>
             </div>
           </div>
+        </section>
+
+        <h3 id="multipleJumps">MultipleJumps</h3>
+        <section>
+          <b>note</b> : I didn't make this jump mechanic as separate blueprint component, because it's easy to set up inside character, and actually <code>CurrentJumpCount</code> inside character is protected variable.
+          <hr>
+          <iframe src="https://www.youtube.com/embed/ll8QgypVnas" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br>example use in video :
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/MultipleJumps/HowitzerAnimBP_MultipleJumps.uasset">
+            <code>
+              HowitzerAnimBP_MultipleJumps
+            </code>
+          </a>
+          +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/MultipleJumps/HowitzerCharBP_MultipleJumps.uasset">
+            <code>
+              HowitzerCharBP_MultipleJumps
+            </code>
+          </a>
+          <br>
+          outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-howitzer">Paragon: Howitzer</a>
+          <hr>
+          <p>
+            <b>Multiple Jumps</b> : character ability jump in the air, this include double jump, which basically just multiple jump with 2 jumps limit, in the example above it was just <code>JumpMaxCount = 3</code>.
+          </p>
+
         </section>
 
         <h3 id="jumpThenGlide">Jump then Glide</h3>
@@ -984,44 +948,401 @@
           </div>
         </section>
 
-        <h3 id="multipleJumps">MultipleJumps</h3>
+        <h3>JumpThenFastDrop</h3>
         <section>
-          <b>note</b> : I didn't make this jump mechanic as separate blueprint component, because it's easy to set up inside character, and actually <code>CurrentJumpCount</code> inside character is protected variable.
+          <table class="blank-r3">
+          	<tbody>
+          		<tr>
+          			<td>full Blueprint &emsp;</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+                    <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
+                  </a>
+                  &#9658;
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/ChildClass/JumpThenFastDrop.uasset">
+                    <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpThenFastFall</code>
+                  </a>
+          			</td>
+          		</tr>
+          		<tr>
+          			<td>full C++</td>
+          			<td>
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.h">
+                    <code>
+                      ?JumpThenGlideCharacter.h
+                    </code>
+                  </a>
+                  +
+                  <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.cpp">
+                    <code>
+                      ?JumpThenGlideCharacter.cpp
+                    </code>
+                  </a>
+          			</td>
+          		</tr>
+          	</tbody>
+          </table>
+
           <hr>
-          <iframe src="https://www.youtube.com/embed/ll8QgypVnas" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <br>example use in video :
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/MultipleJumps/HowitzerAnimBP_MultipleJumps.uasset">
-            <code>
-              HowitzerAnimBP_MultipleJumps
-            </code>
-          </a>
-          +
-          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/CharacterExamples/MultipleJumps/HowitzerCharBP_MultipleJumps.uasset">
-            <code>
-              HowitzerCharBP_MultipleJumps
-            </code>
-          </a>
-          <br>
-          outside repo dependencies: <a href="https://www.unrealengine.com/marketplace/paragon-howitzer">Paragon: Howitzer</a>
+
           <hr>
           <p>
-            <b>Multiple Jumps</b> : character ability jump in the air, this include double jump, which basically just multiple jump with 2 jumps limit, in the example above it was just <code>JumpMaxCount = 3</code>.
+            <b>Jump then fast drop</b>: is character ability to drop fast after jump apex. Usually it is used as an attack.
           </p>
-
+          <hr>
+          <p>
+            Implementation example of <code>JumpThenFastDrop</code> inside characterBP:
+          </p>
         </section>
 
+        <h2>jump mechanic parent</h2>
+        <h3>JumpMechanic</h3>
+        <section>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpMechanic/JumpMechanic.uasset">
+            <code><img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpMechanic</code>
+          </a>
+          <p><code>JumpMechanic</code> is <code>BlueprintComponent</code> that will be the <b>parent class</b> of all jump mechanics that will be created in this project.</p>
+          <p>Event &amp; function:</p>
+          <ul>
+            <li>
+              <code>GetJumpPeak</code> will return <code>JumpPeak</code> <b>event dispatcher</b> call when <code>Character</code> reach the highest point of the jump. <br>This will be <u>calculated per frame</u> by checking, is <code>Character</code> \(v_z \leq 0\), if it is do <code>JumpPeak</code> call.
+            </li>
+            <li>
+              <code>GetJumpPeak_estimated</code> has same function with <code>GetJumpPeak</code>, <br>
+              but this will <u>calculated once</u>, by finding out the time <code>Character</code> reach the highest point of the jump with: $$t_{peak} = v_{z_{(t_0)}}/g$$
+            </li>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div data-title-r3="additional BPcomponent">
+        <h2>tracker BP</h2>
+        <p>These are additional blueprint components that is used to help showing data related to character jump.</p>
+        <h3>JumpTracker</h3>
+        <section>
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Content/BlueprintComponents/JumpTracker/JumpTracker.uasset">
+            <code>
+              <img src="https://image.ibb.co/c4VKMV/UE4-blueprint-component.jpg" alt="UE4-blueprint-component">JumpTracker
+            </code>
+          </a> +
+          <a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpTracker/Component"><code>📁JumpTracker  component</code></a>
+          <p>This is used to show the jump track and show this data:</p>
+          <ul>
+            <li>jump height (z)</li>
+            <li>jump distance (x, y)</li>
+            <li>jump time (optional)</li>
+          </ul>
+          <hr>
+          <p>How to use:</p>
+          <ol>
+            <li>attach this actor component to <code>character</code> blueprint, then inside <code>character</code> event graph;</li>
+            <li>... on <code>EventOnJumped</code> call <code>JumpTracker.EventOnJumped</code></li>
+            <li>... on <code>EventOnLanded</code> call <code>JumpTracker.EventOnLanded</code></li>
+          </ol>
+        </section>
+        <h3>KeyboardTracker</h3>
+        <section>
+          <p>This is used to show the button input that is pressed during the demo</p>
+        </section>
+      </div>
+
+      <div data-title-r3="equation">
+        <h2>equation cheatsheet</h2>
+        <div>
+          <p>
+            Actually only 1 or 2 equation that end up usefull in this project.
+            One of the scenario when I think people probably will require these equations in case
+            you wanna build procedural level for platformer game.
+          </p>
+          <p>So these part will consist of:</p>
+          <ol>
+            <li>
+              <b>math symbol definition</b> : list of math symbol and their variable counterpart inside UE4
+            </li>
+            <li>
+              <b>derived equation</b> : list of equation that can be used inside UE4
+            </li>
+            <li>
+              <b>base equation</b> : this is kinda useless in programming perspective, but it is the source equation that made those useful derived equation
+            </li>
+          </ol>
+        </div>
+        <h3>math symbol definition</h3>
+        <section>
+          <p>Instead of using long variable names, I'd rather use short math symbol to show the equation related to character jump.</p>
+          <p>So in the table below </p>
+          <table>
+            <caption>math symbol of editable variable inside character</caption>
+            <thead>
+              <tr>
+                <th>symbol</th>
+                <th>blueprint | C++</th>
+                <th>default value</th>
+                <th>unit</th>
+                <th>vector<br>dimension</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td title="character gravity">\(g\)</td>
+                <td>
+                  <img src="https://image.ibb.co/jDHFBV/gravity.jpg" alt="gravity">
+                  <code>
+                    Abs(<span class="grey-r3">GetCharacterMovement()-&gt;</span>GetGravityZ()) *<br><span class="grey-r3">GetCharacterMovement()-&gt;</span>GravityScale;
+                  </code>
+                </td>
+                <td><code>980.0f</code></td>
+                <td>\(cm/s^2\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="gravity scale">\(g_s\)</td>
+                <td>
+                  <img src="https://image.ibb.co/iogRxf/gravity-Scale.jpg" alt="gravity-Scale">
+                  <code>
+                    <span class="grey-r3">GetCharacterMovement()-&gt;</span>GravityScale;
+                  </code>
+                </td>
+                <td><code>1.0f</code></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td title="max horizontal speed / max walk speed">\(v_{xy_{max}}\)</td>
+                <td>
+                  <img src="https://image.ibb.co/cmXhrV/height.jpg" alt="horizontal max velocity">
+                  <code><span class="grey-r3">GetCharacterMovement()-&gt;</span>MaxWalkSpeed;</code>
+                </td>
+                <td><code>600.0f</code></td>
+                <td>\(cm/s\)</td>
+                <td>$$x, y$$</td>
+              </tr>
+              <tr>
+                <td title="z initial velocity / jump z velocity">\(v_{z0}\)</td>
+                <td>
+                  <img src="https://image.ibb.co/muaGkq/vz.jpg" alt="vz">
+                  <code><span class="grey-r3">GetCharacterMovement()-&gt;</span>JumpZVelocity;</code>
+                </td>
+                <td><code>420.0f</code></td>
+                <td>\(cm/s\)</td>
+                <td>$$z$$</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <table>
+            <caption>math symbol of non-editable variable inside character</caption>
+            <thead>
+              <tr>
+                <th>symbol</th>
+                <th>blueprint | C++</th>
+                <th>default value</th>
+                <th>unit</th>
+                <th>vector<br>dimension</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td title="current z-acceleration">\(a_z\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm/s^2\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="level gravity">\(G\)</td>
+                <td>
+                  <img src="https://image.ibb.co/gBU4yL/Get-Gravity-Z.jpg" alt="Get-Gravity-Z">
+                  <code>
+                    <span class="grey-r3">GetCharacterMovement()-&gt;</span>GetGravityZ();
+                  </code>
+                </td>
+                <td><code>-980.0f</code></td>
+                <td>\(cm/s^2\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="max jump height">\(h\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm\)</td>
+                <td>$$z$$</td>
+              </tr>
+              <tr>
+                <td title="jump horizontal distance">\(l\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm\)</td>
+                <td>$$x,y$$</td>
+              </tr>
+              <tr>
+                <td title="max jump horizontal distance">\(l_{max}\)</td>
+                <td></td>
+                <td></td>
+                <td>\(cm\)</td>
+                <td>$$x,y$$</td>
+              </tr>
+              <tr>
+                <td title="current time">\(t\)</td>
+                <td></td>
+                <td></td>
+                <td>\(s\)</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <h3>derived equation</h3>
+        <section>
+          <p>
+            These are some practical equations related to jump that can be used inside UE4, I will divide it into two:
+          </p>
+          <ol>
+            <li>
+              <b>set equation</b> : the output of the equation is <mark>editable</mark> variable <mark>inside</mark> character class in <mark>UE4</mark>, so can be used to set the jump property.
+            </li>
+            <li>
+              <b>get equation</b> : the output of the equation is <mark>not editable</mark> variable <mark>inside</mark> character class in <mark>UE4</mark>, only use it to get data.
+            </li>
+          </ol>
+          <hr>
+          <h4>set equations</h4>
+          <p>Equations that can be used to <b>set</b> the jump :</p>
+          <ul>
+            <li>
+              set <code>JumpZVelocity</code> based on <u style="text-decoration-color: blue">desired</u> <b>max jump height</b> <span class="green-r3">\((h)\)</span> :
+              $$v_{z0} = \sqrt{2gh}$$
+            </li>
+            <li>
+              set  <code>JumpZVelocity</code>, then set <code>MaxWalkSpeed</code> based on <u style="text-decoration-color: blue">desired</u> <b>max jump height</b> <span class="green-r3">\((h)\)</span>  and <u style="text-decoration-color: blue">desired</u> <b>max jump horizontal distance</b> <span class="green-r3">\((l_{max})\)</span> :
+              <ol>
+                <li>
+                  first, set <code>JumpZVelocity</code> ;
+                  $$v_{z0} = \sqrt{2gh}$$
+                </li>
+                <li>
+                  then, set <code>MaxWalkSpeed</code> ;
+                  $$v_{xy_{max}} = \frac{gl_{max}}{2v_{z0}}$$
+                </li>
+              </ol>
+            </li>
+            <li>
+              set <code>GravityScale</code>, then set <code>JumpZVelocity</code> based on <u style="text-decoration-color: blue">desired</u> <b>time at jump peak</b> <span class="green-r3">\((t_p)\)</span> and <u style="text-decoration-color: blue">desired</u>  <b>max jump height</b> <span class="green-r3">\((h)\)</span> :
+              <ol>
+                <li>
+                  first set <code>GravityScale</code> ;
+                  $$g_s =  \frac{1}{|G|}\bigg( \frac{h}{{t_p}^2} \bigg)$$
+                </li>
+                <li>
+                  then \(g\) value is known ;
+                  $$g = |G| \times g_s$$
+                </li>
+                <li>
+                  then set <code>JumpZVelocity</code> :
+                  $$v_{z0} = \sqrt{2gh}$$
+                </li>
+              </ol>
+            </li>
+          </ul>
+          <hr>
+          <h4>get equations</h4>
+          <p>Below is equation to <b>get</b> some data related to jump :</p>
+          <ul>
+            <li>
+              get <b>max jump height</b> :
+              $$h=\frac{{v_{z0}}^2}{2g}$$
+            </li>
+            <li>
+              get <b>time at jump peak</b> <span class="green-r3">\((t_p)\)</span> (<span class="grey-r3">assuming the jump is not interrupted</span>) :
+              $$t_p = \frac{v_{z0}}{g}$$
+            </li>
+            <li>
+              get <b>total jump time</b> (<span class="grey-r3">assuming the jump is not interrupted and character jump on flat surface</span>) :
+              $$t_t = 2t_p$$
+            </li>
+            <li>
+              get <b>jump horizontal distance</b> (<span class="grey-r3">assuming character jump on flat surface</span>) :
+              $$l = v_{xy}\bigg(2\frac{v_{z0}}{g}\bigg)$$
+            </li>
+            <li>
+              get min <b>running time</b> needed so character can get <b>max jump horizontal distance</b> :
+              $$t_r = \frac{v_{xy_{max}}}{a_{xy}}$$
+            </li>
+            <li>
+              get min <b>horizontal distance</b> for character to run to reach <b>max jump horizontal distance</b> :
+              $$l_r = \frac{{v_{xy_{max}}}^2}{2a_{xy}}$$
+            </li>
+          </ul>
+        </section>
+
+        <h3>base equation</h3>
+        <section>
+          <p>This equation will be base </p>
+          <p>Some equation taken from physics in highschool:</p>
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="80" x2="250" y2="80" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(a_z\)</span>
+            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
+            <span style="position: absolute; top: 74px; left: 256px; color: green">\(a_z=-g\)</span>
+          </div>
+
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <line x1="2" y1="10" x2="2" y2="100" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="52" x2="250" y2="52" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="2" y1="80" x2="126" y2="80" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)"/>
+                <line x1="126" y1="80" x2="126" y2="52" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)" stroke-dasharray="5 3" />
+                <line x1="2" y1="31" x2="250" y2="73" stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"/>
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(v_z\)</span>
+            <span style="position: absolute; top: 64px; left: 60px" class="magenta-r3">\(t_p\)</span>
+            <span style="position: absolute; top: 48px; left: 256px">\(t\)</span>
+            <span style="position: absolute; top: 38px; left: 126px; color: red">\(v_z(t_p) = 0\)</span>
+            <span style="position: absolute; top: 18px; left: 6px; color: green">\(v_z(0) = v_{z0}\)</span>
+          </div>
+
+          <div style="position: relative; padding: 5px 0 0 3px">
+            <svg width="260" height="105">
+              <g>
+                <path d="M 2 10 V 100 H 250" stroke="black" stroke-width="1" fill="rgba(0,0,0,0)"></path>
+                <path d="
+                M 2 100
+                C 52 10
+                  200 10
+                  250 100
+                "
+                stroke="blue" stroke-width="1" fill="rgba(0,0,0,0)"></path>
+                <line x1="126" y1="32" x2="126" y2="100" stroke="magenta" stroke-width="1" />
+                <line x1="2" y1="32" x2="126" y2="32" stroke="magenta" stroke-width="1" fill="rgba(0,0,0,0)" stroke-dasharray="5 3" />
+              </g>
+            </svg>
+            <span style="position: absolute; top: 0px; left: 0px">\(z\)</span>
+            <span style="position: absolute; top: 58px; left: 132px" class="magenta-r3">\(z(t_p) = h\)</span>
+            <span style="position: absolute; bottom: 2px; left: 256px">\(t\)</span>
+          </div>
+
+          <div>$$a_z = -g$$</div>
+          <div>$$v_z = v_{z0} - gt$$</div>
+          <div>$$z = v_{z0}t - \frac{gt^2}{2}$$</div>
+
+          <hr>
+        </section>
+
+
+      </div>
     </main>
     <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3.min.js"></script>
-    <script type="text/javascript">
-      let $preText = $('pre:contains("#include")');
-      for (let i = 0; i < $preText.length; i++) {
-        let preText = $($preText[i]).html();
-        preText = preText.replace(/\<span class="com">#include<\/span>/g, '#include');
-        preText = preText.replace(/\<span class="com">#pragma<\/span>/g, '#pragma');
-        $preText[i].innerHTML = preText;
-      }
 
-
-    </script>
   </body>
 </html>
