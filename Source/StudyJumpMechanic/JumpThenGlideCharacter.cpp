@@ -20,6 +20,8 @@ void AJumpThenGlideCharacter::Landed(const FHitResult & Hit)
 	GetCharacterMovement()->bNotifyApex = false;
 	GetCharacterMovement()->GravityScale = DefaultGravityScale;
 	bIsGliding = false;
+	OnLanded(Hit); // the last two line is the default definition of this function from Character.h
+	LandedDelegate.Broadcast(Hit); // broadcast to EventOnLanded blueprint
 }
 
 void AJumpThenGlideCharacter::Jump()

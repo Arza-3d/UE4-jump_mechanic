@@ -56,4 +56,6 @@ void ASecondaryJumpCharacter::OnJumped_Implementation()
 void ASecondaryJumpCharacter::Landed(const FHitResult & Hit)
 {
 	bIsInSecondaryJump = false;
+	OnLanded(Hit); // the last two line is the default definition of this function from Character.h
+	LandedDelegate.Broadcast(Hit); // broadcast to EventOnLanded blueprint
 }
