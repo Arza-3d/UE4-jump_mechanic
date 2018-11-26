@@ -26,7 +26,7 @@
       .comment-r3 .grey-r3{color: rgba(128,128,128,0.5)}
       .com{
         font-style: italic;
-        color: rgba(0,0,0,0.2) !important;
+        color: rgba(0,0,0,0.25);
       }
       .gist-it-gist .gist-file .gist-data, .gister-gist .gist-file .gist-data {
         background-color: #eee !important;
@@ -359,79 +359,11 @@
               >
                 <div>
                   <p>class member declaration</p>
-                  <pre>
-                    #pragma once
-
-                    #include "CoreMinimal.h"
-                    #include "StudyJumpMechanicCharacter.h"
-                    #include "SprintJump_autoCharacter.generated.h"
-
-                    /**
-                     * Character class with built-in auto-sprint jump
-                     */
-                    UCLASS()
-                    class STUDYJUMPMECHANIC_API ASprintJump_autoCharacter : public AStudyJumpMechanicCharacter
-                    {
-                    	GENERATED_BODY()
-
-                    	float DefaultJumpZVelocity;
-
-                    	float GradientJumpToSpeed;
-
-                    public:
-
-                    	ASprintJump_autoCharacter();
-
-                    	void Jump() override;
-
-                    	void Landed(const FHitResult & Hit) override;
-
-                    protected:
-
-                    	// this value should be higher than CharacterMovement.JumpZVelocity
-                    	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Auto Sprint Jump")
-                    	float MaxJumpZVelocity;
-
-                    	float GetXYSpeed();
-
-                    };
-                  </pre>
+                  <script src="https://gist-it.appspot.com/https://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.h"></script>
                 </div>
                 <div>
                   <p>auto sprint jump logic :</p>
-                  <pre>
-                    #include "SprintJump_autoCharacter.h"
-                    #include "GameFramework/CharacterMovementComponent.h"
-                    #include "Components/CapsuleComponent.h"
-                    #include "Kismet/KismetMathLibrary.h"
-
-                    ASprintJump_autoCharacter::ASprintJump_autoCharacter()
-                    {
-                    	DefaultJumpZVelocity = GetCharacterMovement()->JumpZVelocity;
-                    	MaxJumpZVelocity = 1200.0f;
-                    	GradientJumpToSpeed = (MaxJumpZVelocity - DefaultJumpZVelocity) / GetCharacterMovement()->MaxWalkSpeed;
-                    }
-
-                    float ASprintJump_autoCharacter::GetXYSpeed()
-                    {
-                    	FVector ActorVelocity = GetCapsuleComponent()->GetPhysicsLinearVelocity();
-                    	float xSpeedSquared = UKismetMathLibrary::Square(ActorVelocity.Component(0));
-                    	float ySpeedSquared = UKismetMathLibrary::Square(ActorVelocity.Component(1));
-                    	return UKismetMathLibrary::Sqrt(xSpeedSquared + ySpeedSquared);
-                    }
-
-                    void ASprintJump_autoCharacter::Jump()
-                    {
-                    	float NewJumpZVelocity = GradientJumpToSpeed * GetXYSpeed() + DefaultJumpZVelocity;
-                    	GetCharacterMovement()->JumpZVelocity = NewJumpZVelocity;
-                    	Super::Jump();
-                    }
-
-                    void ASprintJump_autoCharacter::Landed(const FHitResult & Hit)
-                    {
-                    	GetCharacterMovement()->JumpZVelocity = DefaultJumpZVelocity;
-                    }
-                  </pre>
+                  <script src="https://gist-it.appspot.com/https://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.cpp"></script>
                 </div>
               </div>
             </div>
@@ -616,131 +548,25 @@
           <h4>pure C++</h4>
           <div>
             <p>
-              <p>
-                In pure C++, this jump mechanic is in <code>SprintJumpCharacter.cpp</code>,
-                which is the child of third person character C++ template.
-              </p>
-              <div class="tab-r3">
-                <nav>
-                 <a><var>JumpThenGlideCharacter</var>.h</a>
-                 <a><var>JumpThenGlideCharacter</var>.cpp</a>
-               </nav>
-               <div class="cpp-codexes-r3"
-                 data-cpp-class-r3="JumpThenGlideCharacter"
-                 data-cpp-var-r3="DefaultGravityScale,bJumpInputIsPressed,bIsAbleToGlide,GlideGravityScale"
-                 data-cpp-var2-r3="bIsGliding"
-               >
-                 <div>
-                   <p>class member declaration:</p>
-                   <pre>
-                     #pragma once
-
-                     #include "CoreMinimal.h"
-                     #include "StudyJumpMechanicCharacter.h"
-                     #include "JumpThenGlideCharacter.generated.h"
-
-                     /**
-                      *  Character class with built-in jump then glide
-                      */
-                     UCLASS()
-                     class STUDYJUMPMECHANIC_API AJumpThenGlideCharacter : public AStudyJumpMechanicCharacter
-                     {
-                     	GENERATED_BODY()
-
-                     	float DefaultGravityScale;
-
-                     	bool bJumpInputIsPressed;
-
-                     	bool bIsAbleToGlide;
-
-                     public:
-
-                     	AJumpThenGlideCharacter();
-
-                     	void Jump() override;
-
-                     	void StopJumping() override;
-
-                     	void NotifyJumpApex() override;
-
-                     	void Landed(const FHitResult & Hit) override;
-
-                     protected:
-
-                     	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Jump Then Glide")
-                     	float GlideGravityScale;
-
-                     	// is meant to be used for animBP (optional)
-                     	UPROPERTY(BlueprintReadOnly, Category = "Jump Then Glide")
-                     	bool bIsGliding;
-
-                     };
-                   </pre>
-                 </div>
-                 <div>
-                   <p>jump then glide mechanic logic:</p>
-                   <pre>
-                     #include "JumpThenGlideCharacter.h"
-                     #include "GameFramework/CharacterMovementComponent.h"
-
-                     AJumpThenGlideCharacter::AJumpThenGlideCharacter()
-                     {
-                     	DefaultGravityScale = GetCharacterMovement()->GravityScale;
-                     	GlideGravityScale = 0.08f;
-                     	bJumpInputIsPressed = false;
-                     	bIsAbleToGlide = false;
-
-                     	// is meant to be used with animBP (optional)
-                     	bIsGliding = false;
-                     }
-
-                     void AJumpThenGlideCharacter::Landed(const FHitResult & Hit)
-                     {
-                     	bIsAbleToGlide = false;
-                     	GetCharacterMovement()->bNotifyApex = false;
-                     	GetCharacterMovement()->GravityScale = DefaultGravityScale;
-                     	bIsGliding = false;
-                     }
-
-                     void AJumpThenGlideCharacter::Jump()
-                     {
-                     	bJumpInputIsPressed = true;
-
-                     	if (GetCharacterMovement()->IsFalling())
-                     	{
-                     		if (bIsAbleToGlide && bJumpInputIsPressed) {
-                     			GetCharacterMovement()->GravityScale = GlideGravityScale;
-                     			bIsGliding = true;
-                     		}
-                     	}
-                     	else
-                     	{
-                     		Super::Jump();
-                     		GetCharacterMovement()->bNotifyApex = true;
-                     	}
-                     }
-
-                     void AJumpThenGlideCharacter::StopJumping()
-                     {
-                     	bJumpInputIsPressed = false;
-                     	GetCharacterMovement()->GravityScale = DefaultGravityScale;
-                     	bIsGliding = false;
-                     	Super::StopJumping();
-                     }
-
-                     void AJumpThenGlideCharacter::NotifyJumpApex()
-                     {
-                     	bIsAbleToGlide = true;
-                     	if (bJumpInputIsPressed) {
-                     		GetCharacterMovement()->GravityScale = GlideGravityScale;
-                     		bIsGliding = true;
-                     	}
-                     }
-                   </pre>
-                 </div>
-               </div>
-              </div>
+              In pure C++, this jump mechanic is in <code>SprintJumpCharacter.cpp</code>,
+              which is the child of third person character C++ template.
             </p>
+            <div class="tab-r3">
+              <nav>
+               <a><var>JumpThenGlideCharacter</var>.h</a>
+               <a><var>JumpThenGlideCharacter</var>.cpp</a>
+             </nav>
+             <div>
+               <div>
+                 <p>class member declaration:</p>
+                 <script src="https://gist-it.appspot.com/https://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.h"></script>
+               </div>
+               <div>
+                 <p>jump then glide mechanic logic:</p>
+                 <script src="https://gist-it.appspot.com/https://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/JumpThenGlideCharacter.cpp"></script>
+               </div>
+             </div>
+            </div>
           </div>
         </section>
 
@@ -773,10 +599,21 @@
     </main>
     <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3.min.js"></script>
     <script type="text/javascript">
+    $('.com').css(
+      {
+        'color' : 'rgba(0,0,0,0.25)'
+      }
+    );
     $('.com:contains("#include")').css(
       {
         'font-style' : 'normal',
-        'color' : 'black !important'
+        'color' : 'rgb(0,0,0)'
+      }
+    );
+    $('.com:contains("#pragma")').css(
+      {
+        'font-style' : 'normal',
+        'color' : 'rgb(0,0,0)'
       }
     );
     /*
