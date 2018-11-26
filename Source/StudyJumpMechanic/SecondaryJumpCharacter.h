@@ -38,7 +38,7 @@ protected:
 
 	// is meant to be used for animBP (optional)
 	UPROPERTY(BlueprintReadOnly, Category = "Secondary / Heavy Jump")
-	float bIsInSecondaryJump;
+	bool bIsInSecondaryJump;
 
 	void SecondaryInputPressed();
 
