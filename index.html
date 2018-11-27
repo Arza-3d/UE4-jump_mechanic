@@ -35,6 +35,7 @@
         font-family: "Roboto Mono",Consolas,monospace !important;
         font-size: 10px;
         tab-size: 4;
+        width: auto;
       }
       summary {
         font-weight: normal;
@@ -90,14 +91,11 @@
           <code>📁Source/📁<a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Source/StudyJumpMechanic">StudyJumpMechanic</a></code>
         </li>
       </ol>
-
       <span>
         note: <u style="text-decoration-color:red">Epic assets that are used in this project are <b>gitignored</b></u>.
         <br>
         <br>
       </span>
-
-
     </header>
     <main class="aside-nav-target-r3">
 
@@ -130,24 +128,27 @@
             </ul>
             <li>
               List of jump mechanics that are not here yet :
-              <ul>
-                <li>
-                  <b>Charged jump</b> like in Tony Hawk or any snowboarding game
-                </li>
-                <li>
-                  <b>Jump from wall to wall</b> like in Prince of Persia
-                </li>
-                <li>
-                  <b>Jump then fast fall</b>
-                </li>
-                <li>
-                  <b>Jump on enemy</b> like in Batman Arkham
-                </li>
-                <li>
-                  <b>Auto jump</b> like in Assassin's Creed
-                </li>
-              </ul>
             </li>
+            <ul>
+              <li>
+                <b>Charged jump</b> like in Tony Hawk or any snowboarding game
+              </li>
+              <li>
+                <b>Jump from wall to wall</b> like in Prince of Persia
+              </li>
+              <li>
+                <b>Jump then fast fall</b>
+              </li>
+              <li>
+                <b>Jump on enemy</b> like in Batman Arkham
+              </li>
+              <li>
+                <b>Auto jump</b> like in Assassin's Creed
+              </li>
+            </ul>
+          </ul>
+          <hr>
+          <ul>
             <li>
               <details>
                 <summary>List of solved failures :</summary>
@@ -156,10 +157,10 @@
                     Override <code>Landed</code> could make <code>EventOnLanded</code> inside blueprint won't be fired
                   </li>
                   <li>
-                    There is <code>NotifyJumpApex</code> in blueprint and C++, <br>no need to make new function for that task
+                    There is <code>NotifyJumpApex</code> in blueprint and C++, no need to make new function for that task
                   </li>
                   <li>
-                    Keep it simple
+                    <code>Jump</code> function will not be counted if it's called outside character class
                   </li>
                 </ul>
               </details>
@@ -175,7 +176,6 @@
               </details>
             </li>
           </ul>
-
         </div>
 
         </script>
@@ -349,14 +349,10 @@
             <div class="tab-r3">
               <nav>
                 <a><var>SprintJump_autoCharacter</var>.h</a>
+                <span>+</span>
                 <a><var>SprintJump_autoCharacter</var>.cpp</a>
               </nav>
-              <div  class="cpp-codexes-r3"
-                data-cpp-class-r3="SprintJump_autoCharacter"
-                data-cpp-funct-r3="GetXYSpeed,Sprint,StopSprinting"
-                data-cpp-var-r3="DefaultJumpZVelocity,MaxJumpZVelocity,GradientJumpToSpeed"
-                data-cpp-var2-r3="bIsSprinting,bIsInSprintJump"
-              >
+              <div>
                 <div>
                   <p>class member declaration</p>
                   <script src="https://gist-it.appspot.com/https://github.com/Arza-3d/UE4-jump-mechanic/raw/master/Source/StudyJumpMechanic/SprintJump_autoCharacter.h"></script>
@@ -452,7 +448,9 @@
             <div class="tab-r3">
               <nav>
                 <a><var>SecondaryJumpCharacter</var>.h</a>
+                <span>+</span>
                 <a><var>SecondaryJumpCharacter</var>.cpp</a>
+                <span>+</span>
                 <a>DefaultInput.ini</a>
               </nav>
               <div>
@@ -469,7 +467,7 @@
                     add player input <kbd>Shift</kbd> in <a href="https://github.com/Arza-3d/UE4-jump-mechanic/blob/master/Config/DefaultInput.ini"><code>GameInput.ini</code></a> :
                   </p>
                   <pre>
-                    +ActionMappings=(ActionName="SecondaryInput",Key=LeftShift,bShift=False,bCtrl=False,bAlt=False,bCmd=False)
+                    +ActionMappings=(ActionName=<span class="green-r3">"SecondaryInput"</span>,Key=LeftShift,bShift=False,bCtrl=False,bAlt=False,bCmd=False)
                   </pre>
                 </div>
               </div>
@@ -554,6 +552,7 @@
             <div class="tab-r3">
               <nav>
                <a><var>JumpThenGlideCharacter</var>.h</a>
+               <span>+</span>
                <a><var>JumpThenGlideCharacter</var>.cpp</a>
              </nav>
              <div>
@@ -572,7 +571,7 @@
 
         <h3 id="multipleJumps">MultipleJumps</h3>
         <section>
-          <b>note</b> : I didn't make this jump mechanic as separate blueprint component, because it's easy to set up inside character, and actually <code>CurrentJumpCount</code> inside character is protected variable.
+          <b>note</b> : no need to make new class to make multiple jump because it's so easy to make
           <hr>
           <iframe src="https://www.youtube.com/embed/ll8QgypVnas" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br>example use in video :
@@ -599,33 +598,23 @@
     </main>
     <script src="https://raw.githack.com/Arza-3d/ar3.js/master/ar3.min.js"></script>
     <script type="text/javascript">
-    $('.com').css(
-      {
-        'color' : 'rgba(0,0,0,0.25)'
-      }
-    );
-    $('.com:contains("#include")').css(
-      {
-        'font-style' : 'normal',
-        'color' : 'rgb(0,0,0)'
-      }
-    );
-    $('.com:contains("#pragma")').css(
-      {
-        'font-style' : 'normal',
-        'color' : 'rgb(0,0,0)'
-      }
-    );
-    /*
-      let $preText = $('pre:contains("#include")');
-      for (let i = 0; i < $preText.length; i++) {
-        let preText = $($preText[i]).html();
-        preText = preText.replace(/\<span class="com">#include<\/span>/g, '#include');
-        preText = preText.replace(/\<span class="com">#pragma<\/span>/g, '#pragma');
-        $preText[i].innerHTML = preText;
-      }
-    */
-
+      $('.com').css(
+        {
+          'color' : 'rgba(0,0,0,0.25)'
+        }
+      );
+      $('.com:contains("#include")').css(
+        {
+          'font-style' : 'normal',
+          'color' : 'rgb(0,0,0)'
+        }
+      );
+      $('.com:contains("#pragma")').css(
+        {
+          'font-style' : 'normal',
+          'color' : 'rgb(0,0,0)'
+        }
+      );
     </script>
   </body>
 </html>
