@@ -150,6 +150,23 @@
           <hr>
           <ul>
             <li>
+              List of extra blueprint component I end up making during this study :
+            </li>
+            <ul>
+              <li>
+                <a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/JumpTracker"><code>JumpTracker</code></a> builds arrows everytime character jump, it also calculate character jump height by default
+              </li>
+              <li>
+                <a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/KeyboardTracker"><code>KeyboardTracker</code></a> show keyboard input
+              </li>
+              <li>
+                <a href="https://github.com/Arza-3d/UE4-jump-mechanic/tree/master/Content/BlueprintComponents/SpeedTracker"><code>SpeedTracker</code></a> show horizontal speed
+              </li>
+            </ul>
+          </ul>
+          <hr>
+          <ul>
+            <li>
               <details>
                 <summary>List of solved failures :</summary>
                 <ul>
@@ -161,6 +178,9 @@
                   </li>
                   <li>
                     <code>Jump</code> function will not be counted if it's called outside character class
+                  </li>
+                  <li>
+                    <code>OnReachJumpApex</code> can't be access outside of character
                   </li>
                 </ul>
               </details>
@@ -175,6 +195,7 @@
                 </ul>
               </details>
             </li>
+
           </ul>
         </div>
 
@@ -511,7 +532,7 @@
           </table>
           <div>
             <p>
-              <b>Jump then glide</b>: character able to glide in the air after jump. In this jump mechanic, the glide is achieved throu changing \(g\)  after character has reached jump apex <span class="comment-r3">( if the player hold the <kbd style="color:transparent">Space</kbd> key )</span>. \(g\) is changed to smaller value, but still \(g\gt0\), so if you wanna simulate character that jump with <u>parachute</u> that will have <u>long distance fall, don't use this</u>.
+              <b>Jump then glide</b>: character able to glide in the air after jump. In this jump mechanic, the glide is achieved throu changing <code>GravityScale</code> after character has reached jump apex <span class="comment-r3">( if the player hold the <kbd style="color:transparent">Space</kbd> key )</span>. <code>GravityScale</code> is changed to smaller value, but still <code>GravityScale</code> &gt; 0, so if you wanna simulate character that jump with <u>parachute</u> that will have <u>long distance fall, don't use this</u>.
             </p>
             <p>
               I think <a href="https://en.wikipedia.org/wiki/Rayman_Legends">Rayman</a> and <a href="https://en.wikipedia.org/wiki/Spyro">Spyro</a> used this jump mechanic.
