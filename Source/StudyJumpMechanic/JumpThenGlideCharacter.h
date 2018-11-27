@@ -37,7 +37,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Jump Then Glide")
 	float GlideGravityScale;
 
-	// is meant to be used for animBP (optional)
+	// for animBP (optional)
 	UPROPERTY(BlueprintReadOnly, Category = "Jump Then Glide")
 	bool bIsGliding;
 

@@ -30,4 +30,6 @@ void ASprintJump_autoCharacter::Jump()
 void ASprintJump_autoCharacter::Landed(const FHitResult & Hit)
 {
 	GetCharacterMovement()->JumpZVelocity = DefaultJumpZVelocity;
+	OnLanded(Hit);
+	LandedDelegate.Broadcast(Hit);
 }

@@ -48,13 +48,7 @@ protected:
 	// exposed as public for animBP
 	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
 	float DefaultJumpZVelocity;
-
-	// is meant to be used for animBP (optional):
-	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
 	bool bIsSprinting;
-
-	// is meant to be used for animBP (optional):
-	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
 	bool bIsInSprintJump;
 
 };

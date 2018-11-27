@@ -23,11 +23,8 @@ class STUDYJUMPMECHANIC_API ASecondaryJumpCharacter : public AStudyJumpMechanicC
 public:
 	ASecondaryJumpCharacter();
 
-	// (option A) is meant to be used for animBP, use this IF character has different jump start animation
+	// for animBP (optional)
 	void Jump() override;
-
-	// (option B) is meant to be used for animBP, use this IF character has same jump start animtaion but has different jump animation while in the air
-	//void OnJumped_Implementation() override;
 
 	void Landed(const FHitResult & Hit) override;
 
@@ -36,7 +33,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Secondary / Heavy Jump")
 	float SecondaryJumpZVelocity;
 
-	// is meant to be used for animBP (optional)
+	// for animBP (optional)
 	UPROPERTY(BlueprintReadOnly, Category = "Secondary / Heavy Jump")
 	bool bIsInSecondaryJump;
 

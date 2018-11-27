@@ -10,7 +10,7 @@ AJumpThenGlideCharacter::AJumpThenGlideCharacter()
 	bJumpInputIsPressed = false;
 	bIsAbleToGlide = false;
 
-	// is meant to be used with animBP (optional)
+	// for animBP (optional)
 	bIsGliding = false;
 }
 
@@ -20,8 +20,8 @@ void AJumpThenGlideCharacter::Landed(const FHitResult & Hit)
 	GetCharacterMovement()->bNotifyApex = false;
 	GetCharacterMovement()->GravityScale = DefaultGravityScale;
 	bIsGliding = false;
-	OnLanded(Hit); // the last two line is the default definition of this function from Character.h
-	LandedDelegate.Broadcast(Hit); // broadcast to EventOnLanded blueprint
+	OnLanded(Hit);
+	LandedDelegate.Broadcast(Hit);
 }
 
 void AJumpThenGlideCharacter::Jump()

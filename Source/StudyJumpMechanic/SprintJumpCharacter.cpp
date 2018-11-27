@@ -14,7 +14,7 @@ ASprintJumpCharacter::ASprintJumpCharacter()
 	SprintJumpZVelocity = 1200.0f;
 	GradientJumpToSpeed = (SprintJumpZVelocity - DefaultJumpZVelocity) / (MaxSprintSpeed - DefaultMaxWalkSpeed);
 
-	// these are meant to be used for AnimBP (optional):
+	// for AnimBP (optional):
 	bIsSprinting = false;
 	bIsInSprintJump = false;
 }
@@ -55,6 +55,8 @@ void ASprintJumpCharacter::Landed(const FHitResult & Hit)
 {
 	GetCharacterMovement()->JumpZVelocity = DefaultJumpZVelocity;
 	bIsInSprintJump = false;
+	OnLanded(Hit);
+	LandedDelegate.Broadcast(Hit);
 }
 
 void ASprintJumpCharacter::Jump()

@@ -30,7 +30,7 @@ void ASecondaryJumpCharacter::SecondaryInputReleased()
 	bSecondaryButtonIsPressed = false;
 }
 
-// (option A) is meant to be used for animBP, use this IF character has different jump start animation
+// for animBP (optional)
 void ASecondaryJumpCharacter::Jump()
 {
 	if (bSecondaryButtonIsPressed)
@@ -41,21 +41,10 @@ void ASecondaryJumpCharacter::Jump()
 	Super::Jump();
 }
 
-/*
-// (option B) is meant to be used for animBP, use this IF character has same jump start animation but different jump animation while in the air
-void ASecondaryJumpCharacter::OnJumped_Implementation()
-{
-	if (bSecondaryButtonIsPressed)
-	{
-		bIsInSecondaryJump = true;
-	}
-}
-*/
-
-// is meant to be used for animBP, if you don't use different jump animation this is not needed
+// for animBP (optional)
 void ASecondaryJumpCharacter::Landed(const FHitResult & Hit)
 {
 	bIsInSecondaryJump = false;
-	OnLanded(Hit); // the last two line is the default definition of this function from Character.h
-	LandedDelegate.Broadcast(Hit); // broadcast to EventOnLanded blueprint
+	OnLanded(Hit); 
+	LandedDelegate.Broadcast(Hit);
 }
