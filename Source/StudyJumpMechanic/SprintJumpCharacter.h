@@ -45,10 +45,16 @@ protected:
 
 	float GetXYSpeed();
 
-	// exposed as public for animBP
+	// for animBP
 	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
 	float DefaultJumpZVelocity;
+
+	// for animBP
+	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
 	bool bIsSprinting;
+
+	// for animBP
+	UPROPERTY(BlueprintReadOnly, Category = "Sprint Jump")
 	bool bIsInSprintJump;
 
 };
