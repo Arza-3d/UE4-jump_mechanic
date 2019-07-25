@@ -9,6 +9,7 @@ Content/*
 !Content/BlueprintComponents/
 !Content/BlueprintLibrary/
 !Content/CharacterExamples/
+!Content/ExampleContent/
 !Content/ThirdPersonCPP/
 Content/ThirdPersonCPP/Maps/
 
